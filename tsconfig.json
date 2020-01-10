@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["es2018"],
+    "skipLibCheck": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "jsx": "react-native",
+    "strict": true,
+    "esModuleInterop": true
+  }
+}

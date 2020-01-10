@@ -1,0 +1,25 @@
+{
+  "name": "react-native-stylex",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": "git@github.com:retyui/react-native-stylex.git",
+  "author": "David <4661784+retyui@users.noreply.github.com>",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rm lib/* && yarn tsc",
+    "prepublishOnly": "yarn build"
+  },
+  "peerDependencies": {
+    "react": ">=16.4.0",
+    "react-native": ">=0.59.0"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-native": "^0.60.30",
+    "typescript": "^3.7.4"
+  }
+}
