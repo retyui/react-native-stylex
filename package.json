@@ -10,7 +10,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "rm lib/* && yarn tsc",
+    "build": "rm -f lib/* && yarn tsc",
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
