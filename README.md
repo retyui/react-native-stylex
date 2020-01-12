@@ -1,10 +1,15 @@
 # react-native-stylex
 
+[![npm](https://img.shields.io/npm/v/react-native-stylex.svg)](https://www.npmjs.com/package/react-native-stylex)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-stylex.svg)](https://www.npmtrends.com/react-native-stylex)
+
 A simple concept of styling for React Native application
 
-<img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/dark.png"/><img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/light.png"/>
+Live demo here: [snack.expo.io/AppStyleX](https://snack.expo.io/@retyui/react-native-stylex)
 
-Live demo here: [AppStyleX](example/AppStyleX).
+Example demo here: [AppStyleX](example/AppStyleX).
+
+<img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/dark.png"/><img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/light.png"/>
 
 ### Module features:
 
