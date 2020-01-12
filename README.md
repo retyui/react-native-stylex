@@ -2,6 +2,10 @@
 
 A simple concept of styling for React Native application
 
+<img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/dark.png"/><img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/light.png"/>
+
+Live demo here: [AppStyleX](example/AppStyleX).
+
 ### Module features:
 
 - Very light and simple;
