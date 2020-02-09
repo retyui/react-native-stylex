@@ -1,6 +1,6 @@
 {
   "name": "react-native-stylex",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": "git@github.com:retyui/react-native-stylex.git",
