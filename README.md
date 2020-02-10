@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-native-stylex.svg)](https://www.npmjs.com/package/react-native-stylex)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-stylex.svg)](https://www.npmtrends.com/react-native-stylex)
+![CI](https://github.com/retyui/react-native-stylex/workflows/Node.js%20CI/badge.svg)
 
 A simple concept of styling for React Native application
 
