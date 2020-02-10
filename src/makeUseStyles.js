@@ -7,19 +7,23 @@ import useTheme from "./useTheme";
 
 const makeUseStyles = styles => {
   const useStyles = () => {
-    const { window: windowDimensions } = useDimensions();
+    const isDynamic = typeof styles === "function";
     const theme = useTheme();
+    const { window: windowDimensions } = useDimensions();
 
     return useMemo(
       () =>
         StyleSheet.create(
           resolveMediaQueries(
-            typeof styles === "function" ? styles(theme) : styles,
-
+            isDynamic ? styles(theme) : styles,
             windowDimensions
           )
         ),
-      [theme, windowDimensions]
+      [
+        // do not use theme as dependency when passed styled are not function
+        isDynamic ? theme : null, 
+        windowDimensions
+      ]
     );
   };
 
