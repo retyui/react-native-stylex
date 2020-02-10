@@ -13,15 +13,19 @@
     "prebuild": "rm -f lib/*",
     "build": "yarn tsc",
     "postbuild": "cp src/*.d.ts lib/",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn test && yarn build",
+    "test": "jest --coverage"
   },
   "peerDependencies": {
     "react": ">=16.4.0",
     "react-native": ">=0.59.0"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.1",
     "@types/react": "^16.9.17",
     "@types/react-native": "^0.60.30",
+    "jest": "^25.1.0",
+    "react-native": "^0.62.0-rc.1",
     "typescript": "^3.7.4"
   }
 }
