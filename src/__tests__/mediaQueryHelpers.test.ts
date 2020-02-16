@@ -24,7 +24,7 @@ describe("max*", () => {
     });
 
     it("should return null when device height equal a passed value", () => {
-      const dimensions = { height: 320 };
+      const dimensions = { height: 321 };
 
       expect(applyDimensions(maxHeight(320, mockStyle), dimensions)).toEqual(
         null
@@ -50,7 +50,7 @@ describe("max*", () => {
     });
 
     it("should return null when device width equal a passed value", () => {
-      const dimensions = { width: 320 };
+      const dimensions = { width: 321 };
 
       expect(applyDimensions(maxWidth(320, mockStyle), dimensions)).toEqual(
         null
@@ -78,7 +78,7 @@ describe("min*", () => {
     });
 
     it("should return null when device height equal a passed value", () => {
-      const dimensions = { height: 320 };
+      const dimensions = { height: 319 };
 
       expect(applyDimensions(minHeight(320, mockStyle), dimensions)).toEqual(
         null
@@ -104,7 +104,7 @@ describe("min*", () => {
     });
 
     it("should return null when device width equal a passed value", () => {
-      const dimensions = { width: 320 };
+      const dimensions = { width: 319 };
 
       expect(applyDimensions(minWidth(320, mockStyle), dimensions)).toEqual(
         null
