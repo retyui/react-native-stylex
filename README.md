@@ -1,15 +1,11 @@
-# react-native-stylex
+# react-native styleX
+
+<div align="center"><img src="https://cdn.rawgit.com/retyui/react-native-stylex/master/docs/logo.png" width="456"/></div>
+
+Better styling for react-native
 
 [![npm](https://img.shields.io/npm/v/react-native-stylex.svg)](https://www.npmjs.com/package/react-native-stylex)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-stylex.svg)](https://www.npmtrends.com/react-native-stylex)
-
-A simple concept of styling for React Native application
-
-Live demo here: [snack.expo.io/AppStyleX](https://snack.expo.io/@retyui/react-native-stylex)
-
-Example demo here: [AppStyleX](example/AppStyleX).
-
-<img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/dark.png"/><img width="269" src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/example/AppStyleX/light.png"/>
 
 ### Module features:
 
@@ -19,6 +15,11 @@ Example demo here: [AppStyleX](example/AppStyleX).
 - Typescript support;
 - CSS Media Queries syntax.
 
+### Links
+
+- [Live demo](https://snack.expo.io/@retyui/react-native-stylex);
+- [Example app](example/AppStyleX).
+
 ## Install
 
 ```sh
@@ -27,7 +28,7 @@ yarn add react-native-stylex
 # or npm install react-native-stylex
 ```
 
-## Theming support
+## Theming support 🔋
 
 You need wrap you'r root component with ThemeProvider and pass theme
 
@@ -76,7 +77,7 @@ const Root = () => {
 };
 ```
 
-## Media Query support
+## Media Query support 💁‍♀️
 
 Use a `makeUseStyles` function to create a hook function that can be used in react render flow
 
@@ -119,23 +120,27 @@ const App = ({ styles }) => <View style={styles.row} />;
 export default withStyles(useStyles)(App);
 ```
 
-## Typescript support
+## Typescript support 🤔
 
-First you need to create a own wrapper and pass you'r theme type
+First you need to create a own wrapper, it is easily do with `.d.ts` file
 
 ```typescript jsx
-// ./my-stylex.ts
-import { makeUseStyles as coreMakeUseStyles } from "react-native-stylex";
-
+// ./theme.ts
 const theme = {
   colors: { textColor: "black" }
 };
 
-type MyTheme = typeof theme;
+export type MyTheme = typeof theme;
 
-export const makeUseStyles = <Styles extends {}>(
-  styles: Styles | ((theme: MyTheme) => Styles)
-) => coreMakeUseStyles<MyTheme, Styles>(styles);
+// ./my-stylex.js
+export { makeUseStyles } from "react-native-stylex";
+
+// .my-stylex.d.ts
+import { MakeUseStylesFn } from "react-native-stylex";
+
+import { Theme } from "./theme";
+
+export const makeUseStyles: MakeUseStylesFn<Theme>;
 ```
 
 Then you can easily use own wrapper to create styles that `100%` has type safety
