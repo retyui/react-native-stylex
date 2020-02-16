@@ -20,17 +20,17 @@ export const createDimensionQueryHelper = (
 });
 
 export const maxHeight = createDimensionQueryHelper(
-  ({ value, dimensions }) => value > dimensions.height
+  ({ value, dimensions }) => value >= dimensions.height
 );
 
 export const maxWidth = createDimensionQueryHelper(
-  ({ value, dimensions }) => value > dimensions.width
+  ({ value, dimensions }) => value >= dimensions.width
 );
 
 export const minHeight = createDimensionQueryHelper(
-  ({ value, dimensions }) => value < dimensions.height
+  ({ value, dimensions }) => value <= dimensions.height
 );
 
 export const minWidth = createDimensionQueryHelper(
-  ({ value, dimensions }) => value < dimensions.width
+  ({ value, dimensions }) => value <= dimensions.width
 );
