@@ -11,17 +11,45 @@ Use a `makeUseStyles` function to create a hook function that can be used in rea
 
 Available media conditions:
 
-- `maxWidth(number, { /* styles */ })`
-- `minWidth(number, { /* styles */ })`
-- `minHeight(number, { /* styles */ })`
-- `maxHeight(number, { /* styles */ })`
+#### `orientation({ portrait: {/* styles */},landscape: {/* styles */} })`
+
+This function given an object containing orientation variants as keys, returns the value for the orientation you are
+currently. (inspired by [`Platform.select(...)`](https://facebook.github.io/reac-native/docs/platform-specific-code#platform-module))
+
+#### `maxWidth(width: number, {/* styles */})`
+
+Returns styles when a window width is equal or less than passed `width`
+
+#### `minWidth(width: number, {/* styles */})`
+
+Returns styles when a window width is equal or greater than passed `width`
+
+#### `maxHeight(height: number, {/* styles */})`
+
+Returns styles when window height is equal or less than passed `height`
+
+#### `minHeight(height: number, {/* styles */})`
+
+Returns styles when window height is equal or greater than passed `height`
+
+#### `aspectRatio(ratio: number, {/* styles */})`
+
+Returns styles when a window aspect ratio is the same as a passed `ratio`
+
+#### `maxAspectRatio(ratio: number, {/* styles */})`
+
+Returns styles when a window aspect ratio is equal or less than passed `ratio`
+
+#### `minAspectRatio(ratio: number, {/* styles */})`
+
+Returns styles when a window aspect ratio is equal or greater than passed `ratio`
 
 **Example:**
 
 ```js
-import { makeUseStyles, minWidth } from "react-native-stylex";
+import { makeUseStyles, minWidth, orientation } from "react-native-stylex";
 
-const useStyles = makeUseStyles({
+const useStyles = makeUseStyles(() => ({
   root: {
     height: 200,
     width: 200,
@@ -34,13 +62,19 @@ const useStyles = makeUseStyles({
   row: minWidth(320, {
     height: 160,
     width: 160
-  })
-});
+  }),
+  cell: {
+    backgroundColor: "red",
+    ...orientation({
+      portrait: { alignSelf: "flex-start" }
+    })
+  }
+}));
 ```
 
 ## Using styles 🧲
 
-You use styles in function and class components:
+You can use styles in function or class components:
 
 ```js
 import React, { Component } from "react";

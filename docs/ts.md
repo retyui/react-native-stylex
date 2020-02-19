@@ -35,7 +35,7 @@ Then you can easily use own wrapper to create styles that `100%` has type safety
 ```typescript jsx
 import { makeUseStyles } from "./my-stylex";
 
-const useStyles = makeUseStyles({ root: {} });
+const useStyles = makeUseStyles(() => ({ root: {} }));
 
 useStyles().root;
 // Error: Property 'rootXX' does not exist on type '{ root: {}; }'.

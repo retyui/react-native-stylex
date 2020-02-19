@@ -6,17 +6,15 @@ const screen = Dimensions.get("screen");
 
 const initialValue = { window, screen };
 
+type Params = { window: ScaledSize; screen: ScaledSize };
+
 const useDimensions = () => {
   const [dimensions, setDimensions] = useState(initialValue);
-  const onChange = ({
-    window,
-    screen
-  }: {
-    window: ScaledSize;
-    screen: ScaledSize;
-  }) => setDimensions({ window, screen });
 
   useEffect(() => {
+    const onChange = ({ window, screen }: Params) =>
+      setDimensions({ window, screen });
+
     Dimensions.addEventListener("change", onChange);
 
     return () => Dimensions.removeEventListener("change", onChange);

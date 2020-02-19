@@ -1,36 +1,49 @@
-import { getMediaQueryKey } from "./customMediaQueryProp";
-import { Dimensions } from "./types";
+import { Dimensions, ScaledSize } from "react-native";
 
-export const createDimensionQueryHelper = (
-  queryFunction: (options: { value: number; dimensions: Dimensions }) => boolean
+export const createDimensionQueryHelper = <Value>(
+  queryFunction: (options: { value: Value; dimensions: ScaledSize }) => boolean
 ) => <StyleObject extends {}>(
-  value: number,
+  value: Value,
   styles: StyleObject
-  // @ts-ignore
-): null | StyleObject => ({
-  [getMediaQueryKey()]: (dimensions: Dimensions) => {
-    const isMatched = queryFunction({ value, dimensions });
+): null | StyleObject => {
+  const dimensions: ScaledSize = Dimensions.get("window");
+  const isMatched = queryFunction({ value, dimensions });
 
-    if (isMatched) {
-      return styles;
-    }
-
-    return null;
+  if (isMatched) {
+    return styles;
   }
-});
 
-export const maxHeight = createDimensionQueryHelper(
+  return null;
+};
+
+export const maxHeight = createDimensionQueryHelper<number>(
   ({ value, dimensions }) => value >= dimensions.height
 );
 
-export const maxWidth = createDimensionQueryHelper(
+export const maxWidth = createDimensionQueryHelper<number>(
   ({ value, dimensions }) => value >= dimensions.width
 );
 
-export const minHeight = createDimensionQueryHelper(
+export const minHeight = createDimensionQueryHelper<number>(
   ({ value, dimensions }) => value <= dimensions.height
 );
 
-export const minWidth = createDimensionQueryHelper(
+export const minWidth = createDimensionQueryHelper<number>(
   ({ value, dimensions }) => value <= dimensions.width
+);
+
+
+export const minAspectRatio = createDimensionQueryHelper<number>(
+  ({ value, dimensions: { width, height } }) =>
+      value <= width / height
+);
+
+export const maxAspectRatio = createDimensionQueryHelper<number>(
+  ({ value, dimensions: { width, height } }) =>
+    value >= width / height
+);
+
+export const aspectRatio = createDimensionQueryHelper<number>(
+  ({ value, dimensions: { width, height } }) =>
+    value === width / height
 );
