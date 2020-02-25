@@ -1,4 +1,11 @@
 import { Dimensions, ScaledSize } from "react-native";
+import { addDependency } from "./dependencyRegistry";
+import { useDimensions } from "./useDimensions";
+import { onUse } from "./dependencyUsage";
+
+const DEPENDENCY_KEY = "windowDimension";
+
+addDependency(DEPENDENCY_KEY, () => useDimensions().window);
 
 export const createDimensionQueryHelper = <Value>(
   queryFunction: (options: { value: Value; dimensions: ScaledSize }) => boolean
@@ -8,6 +15,8 @@ export const createDimensionQueryHelper = <Value>(
 ): null | StyleObject => {
   const dimensions: ScaledSize = Dimensions.get("window");
   const isMatched = queryFunction({ value, dimensions });
+
+  onUse(DEPENDENCY_KEY);
 
   if (isMatched) {
     return styles;
@@ -32,18 +41,14 @@ export const minWidth = createDimensionQueryHelper<number>(
   ({ value, dimensions }) => value <= dimensions.width
 );
 
-
 export const minAspectRatio = createDimensionQueryHelper<number>(
-  ({ value, dimensions: { width, height } }) =>
-      value <= width / height
+  ({ value, dimensions: { width, height } }) => value <= width / height
 );
 
 export const maxAspectRatio = createDimensionQueryHelper<number>(
-  ({ value, dimensions: { width, height } }) =>
-    value >= width / height
+  ({ value, dimensions: { width, height } }) => value >= width / height
 );
 
 export const aspectRatio = createDimensionQueryHelper<number>(
-  ({ value, dimensions: { width, height } }) =>
-    value === width / height
+  ({ value, dimensions: { width, height } }) => value === width / height
 );

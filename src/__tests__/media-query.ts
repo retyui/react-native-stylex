@@ -7,7 +7,7 @@ import {
   aspectRatio,
   minAspectRatio,
   maxAspectRatio
-} from "../mediaQueryHelpers";
+} from "../media-query";
 
 const mockStyle = { color: "black" };
 
