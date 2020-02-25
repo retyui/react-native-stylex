@@ -26,6 +26,7 @@
     "@types/react-native": "^0.61.15",
     "jest": "^25.1.0",
     "react-native": "^0.61.5",
+    "react-native-dark-mode": "^0.2.2",
     "typescript": "^3.7.5"
   }
 }
