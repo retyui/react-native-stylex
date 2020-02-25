@@ -3,6 +3,7 @@ import {
   initialMode,
   useDarkModeContext
 } from "react-native-dark-mode";
+
 import { addDependency } from "./dependencyRegistry";
 
 const state = { mode: initialMode };
