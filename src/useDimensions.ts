@@ -8,7 +8,7 @@ const initialValue = { window, screen };
 
 type Params = { window: ScaledSize; screen: ScaledSize };
 
-const useDimensions = () => {
+export const useDimensions = () => {
   const [dimensions, setDimensions] = useState(initialValue);
 
   useEffect(() => {
@@ -22,5 +22,3 @@ const useDimensions = () => {
 
   return dimensions;
 };
-
-export default useDimensions;
