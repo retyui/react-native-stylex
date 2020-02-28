@@ -3,7 +3,7 @@ import { addDependency } from "./dependencyRegistry";
 import { useDimensions } from "./useDimensions";
 import { onUse } from "./dependencyUsage";
 
-const DEPENDENCY_KEY = "windowDimension";
+const DEPENDENCY_KEY = "Dimensions.get('window')";
 
 addDependency(DEPENDENCY_KEY, () => useDimensions().window);
 
