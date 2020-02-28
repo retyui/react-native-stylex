@@ -3,31 +3,25 @@ import { useDimensions } from "./useDimensions";
 import { addDependency } from "./dependencyRegistry";
 import { onUse } from "./dependencyUsage";
 
-const DEPENDENCY_KEY = "screenDimension";
+type OrientationType = "portrait" | "landscape";
+
+const DEPENDENCY_KEY = "Dimensions.get('screen')";
 
 addDependency(DEPENDENCY_KEY, () => useDimensions().screen);
-
-type OrientationType<T> =
-  | {
-      portrait: T;
-      landscape: T;
-    }
-  | {
-      portrait: T;
-      landscape: undefined;
-    }
-  | {
-      portrait: undefined;
-      landscape: T;
-    };
 
 export const orientation = <T extends {}>({
   portrait,
   landscape
-}: OrientationType<T>): T | undefined => {
+}: { [platform in OrientationType]?: T }): T | undefined => {
   const screen = Dimensions.get("screen");
 
   onUse(DEPENDENCY_KEY);
 
   return screen.width < screen.height ? portrait : landscape;
 };
+
+export const portraitOrientation = <T extends {}>(portraitStyles: T) =>
+  orientation<T>({ portrait: portraitStyles });
+
+export const landscapeOrientation = <T extends {}>(landscapeStyles: T) =>
+  orientation<T>({ landscape: landscapeStyles });
