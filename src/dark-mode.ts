@@ -2,38 +2,30 @@ import {
   eventEmitter,
   initialMode,
   useDarkModeContext
+  // @ts-ignore
 } from "react-native-dark-mode";
 
 import { addDependency } from "./dependencyRegistry";
+import { onUse } from "./dependencyUsage";
+
+type UiType = "dark" | "light";
+
+const DEPENDENCY_KEY = "react-native-dark-mode";
 
 const state = { mode: initialMode };
+
+addDependency(DEPENDENCY_KEY, () => useDarkModeContext());
 
 eventEmitter.on("currentModeChanged", (newMode: string) => {
   state.mode = newMode;
 });
 
-const DEPENDENCY_KEY = "react-native-dark-mode";
-
-addDependency(DEPENDENCY_KEY, () => useDarkModeContext());
-
-type InterfaceStyle<T> =
-  | {
-      dark: T;
-      light: T;
-    }
-  | {
-      dark: T;
-      light: undefined;
-    }
-  | {
-      dark: undefined;
-      light: T;
-    };
-
 export const uiMode = <T extends {}>({
   dark,
   light
-}: InterfaceStyle<T>): T | undefined => {
+}: { [platform in UiType]?: T }): T | undefined => {
+  onUse(DEPENDENCY_KEY);
+
   if (state.mode === "dark") {
     return dark;
   }
@@ -44,3 +36,9 @@ export const uiMode = <T extends {}>({
 
   return undefined;
 };
+
+export const darkUiMode = <T extends {}>(dark: T): T | undefined =>
+  uiMode<T>({ dark });
+
+export const lightUiMode = <T extends {}>(light: T): T | undefined =>
+  uiMode<T>({ light });
