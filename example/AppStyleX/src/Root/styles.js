@@ -1,6 +1,6 @@
 import {makeUseStyles} from 'react-native-stylex';
 
-export default makeUseStyles({
+export default makeUseStyles(() => ({
   root: {
     flex: 1,
     justifyContent: 'center',
@@ -15,4 +15,4 @@ export default makeUseStyles({
     textAlign: 'center',
     fontSize: 20,
   },
-});
+}));

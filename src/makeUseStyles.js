@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useDebugValue } from "react";
 import { StyleSheet } from "react-native";
 
 import { getUsing, resetUsing } from "./dependencyUsage";
@@ -41,13 +41,22 @@ export const subscribe = (dependenciesKeys, handler) => {
 };
 
 export const makeUseStyles = getStyles => {
-  const hasThemeDependency = getStyles.length === 0;
+  const hasThemeDependency = getStyles.length === 1;
   const useStyles = () => {
     const theme = useTheme();
     const unsubscribeRef = useRef(noop);
     const [forceUpdateFlag, forceUpdate] = useState(false);
 
     useEffect(() => unsubscribeRef.current, []);
+
+    if (process.env.NODE_ENV !== "production") {
+      useDebugValue(
+        hasThemeDependency ? "dependent on theme" : "no theme dependency"
+      );
+      useDebugValue(
+        `Use APIs: ${getDependenciesKeys().join(", ") || "(no api)"}`
+      );
+    }
 
     return useMemo(() => {
       unsubscribeRef.current();

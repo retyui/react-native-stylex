@@ -1,23 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ThemeProvider} from 'react-native-stylex';
-import {useState} from 'react';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {StylexSaveAreaConsumer} from 'react-native-stylex/safe-area';
+
 import {darkTheme, lightTheme} from './style/theme';
 
 import Root from './Root';
 
 const App = () => {
   const [theme, setTheme] = useState(lightTheme);
+  const toggleTheme = () =>
+    setTheme(currentTheme =>
+      currentTheme === darkTheme ? lightTheme : darkTheme,
+    );
 
   return (
-    <ThemeProvider value={theme}>
-      <Root
-        toggleTheme={() =>
-          setTheme(currentTheme =>
-            currentTheme === darkTheme ? lightTheme : darkTheme,
-          )
-        }
-      />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider value={theme}>
+        <Root toggleTheme={toggleTheme} />
+      </ThemeProvider>
+      <StylexSaveAreaConsumer />
+    </SafeAreaProvider>
   );
 };
 

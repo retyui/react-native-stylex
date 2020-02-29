@@ -37,7 +37,6 @@ const Circle = () => {
   };
 
   useEffect(() => {
-    console.log(' --- xdebug isDarkTheme', isDarkTheme, isDarkTheme ? 1 : 0);
     timing(animatedCircle.current, {
       toValue: isDarkTheme ? 1 : 0,
       duration: 250,

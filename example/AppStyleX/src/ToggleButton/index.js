@@ -6,14 +6,15 @@ import useIsDark from '../style/hooks/useIsDark';
 
 import useStyles, {ROOT_WIDTH} from './styles';
 
-
 const {Value, spring} = Animated;
 const HALF_ROOT_WIDTH = ROOT_WIDTH / 2;
 
 const ToggleButton = ({onPress}) => {
   const styles = useStyles();
   const isDark = useIsDark();
-  const bgStyle = {backgroundColor: useColorTransition(({palette}) => palette.bg)};
+  const bgStyle = {
+    backgroundColor: useColorTransition(({palette}) => palette.bg),
+  };
   const animatedOffset = useRef(new Value(0));
   const animatedStyle = {
     transform: [
