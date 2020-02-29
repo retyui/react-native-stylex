@@ -1,11 +1,6 @@
-import { Dimensions, ScaledSize } from "react-native";
-import { addDependency } from "./dependencyRegistry";
-import { useDimensions } from "./useDimensions";
-import { onUse } from "./dependencyUsage";
+import { ScaledSize } from "react-native";
 
-const DEPENDENCY_KEY = "Dimensions.get('window')";
-
-addDependency(DEPENDENCY_KEY, () => useDimensions().window);
+import { getWindowDimensions } from "./dimensions/index";
 
 export const createDimensionQueryHelper = <Value>(
   queryFunction: (options: { value: Value; dimensions: ScaledSize }) => boolean
@@ -13,10 +8,7 @@ export const createDimensionQueryHelper = <Value>(
   value: Value,
   styles: StyleObject
 ): null | StyleObject => {
-  const dimensions: ScaledSize = Dimensions.get("window");
-  const isMatched = queryFunction({ value, dimensions });
-
-  onUse(DEPENDENCY_KEY);
+  const isMatched = queryFunction({ value, dimensions: getWindowDimensions() });
 
   if (isMatched) {
     return styles;

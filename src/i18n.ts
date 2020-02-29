@@ -1,35 +1,20 @@
 import { I18nManager } from "react-native";
-import { addDependency } from "./dependencyRegistry";
 
-const DEPENDENCY_KEY = "isRTL";
-
-addDependency(DEPENDENCY_KEY, () => {
-  // This hook don't have specific dynamic logic
-  // We can't currently subscribe any events
-  return I18nManager.isRTL;
-});
-
-type LayoutDirection<T> =
-  | {
-      rtl: T;
-      ltr: T;
-    }
-  | {
-      rtl: T;
-      ltr: undefined;
-    }
-  | {
-      rtl: undefined;
-      ltr: T;
-    };
+type LayoutDirectionType = "rtl" | "ltr";
 
 export const i18n = <T extends {}>({
   rtl,
   ltr
-}: LayoutDirection<T>): T | undefined => {
+}: { [direction in LayoutDirectionType]?: T }): T | undefined => {
   if (I18nManager.isRTL) {
     return rtl;
   }
 
   return ltr;
 };
+
+export const rtl = <T extends {}>(styles: T): T | undefined =>
+  i18n<T>({ rtl: styles });
+
+export const ltr = <T extends {}>(styles: T): T | undefined =>
+  i18n<T>({ ltr: styles });

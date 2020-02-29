@@ -1,19 +1,16 @@
 {
   "name": "react-native-stylex",
-  "version": "2.0.0-beta.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "version": "2.0.0-beta.4",
+  "main": "index.js",
+  "types": "index.d.ts",
   "repository": "git@github.com:retyui/react-native-stylex.git",
   "author": "David <4661784+retyui@users.noreply.github.com>",
   "license": "MIT",
-  "files": [
-    "lib"
-  ],
   "scripts": {
-    "prebuild": "rm -f lib/*",
+    "prebuild": "rm -rf lib/*",
     "build": "yarn tsc",
-    "postbuild": "cp src/*.d.ts lib/",
-    "prepublishOnly": "yarn test && yarn build",
+    "postbuild": "rm -rf lib/__tests__ && cp src/*.d.ts lib/",
+    "bundleLib": "yarn test && yarn build && npx clear-package-json package.json > lib/package.json && cp CHANGELOG.md LICENSE README.md lib",
     "test": "jest --coverage"
   },
   "peerDependencies": {
@@ -24,6 +21,7 @@
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.20",
     "@types/react-native": "^0.61.15",
+    "clean-publish": "^1.1.5",
     "jest": "^25.1.0",
     "react": "^16.13.0",
     "react-native": "^0.61.5",

@@ -1,6 +1,5 @@
-export { ThemeProvider, ThemeConsumer } from "./context";
 export { useTheme } from "./useTheme";
 export { withStyles } from "./withStyles";
-export { makeUseStyles, MakeUseStylesFn } from "./makeUseStyles";
+export { ThemeProvider, ThemeConsumer } from "./context";
 export { useColorTransition } from "./useColorTransition";
-
+export { makeUseStyles, MakeUseStylesFn } from "./makeUseStyles";

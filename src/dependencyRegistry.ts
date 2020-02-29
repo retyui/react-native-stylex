@@ -1,7 +1,15 @@
-const registry: Record<string, () => any> = {};
+type SubscribeFn = (handler: () => void) => () => void;
 
-export const addDependency = (name: string, hook: () => any) => {
+const registry: Record<string, SubscribeFn> = {};
+
+export const addDependency = (name: string, onChange: SubscribeFn) => {
   if (!registry[name]) {
-    Object.defineProperty(registry, name, { value: hook, writable: false });
+    Object.defineProperty(registry, name, {
+      value: onChange,
+      writable: false
+    });
   }
 };
+
+export const getDependency = (name: string): SubscribeFn | undefined =>
+  registry[name];
