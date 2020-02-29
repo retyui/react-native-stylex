@@ -38,6 +38,7 @@ const Circle = () => {
 
   useEffect(() => {
     timing(animatedCircle.current, {
+      useNativeDriver: false,
       toValue: isDarkTheme ? 1 : 0,
       duration: 250,
     }).start();

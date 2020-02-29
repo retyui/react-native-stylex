@@ -50,11 +50,16 @@ export const makeUseStyles = getStyles => {
     useEffect(() => unsubscribeRef.current, []);
 
     if (process.env.NODE_ENV !== "production") {
+      const keys = getDependenciesKeys();
+
+      if (hasThemeDependency) {
+        keys.push("User theme");
+      }
+
       useDebugValue(
-        hasThemeDependency ? "dependent on theme" : "no theme dependency"
-      );
-      useDebugValue(
-        `Use APIs: ${getDependenciesKeys().join(", ") || "(no api)"}`
+        keys.length > 0
+          ? `Styles dependent on: ${keys.join(", ")}`
+          : `Styles without any APIs dependencies `
       );
     }
 
