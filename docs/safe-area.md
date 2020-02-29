@@ -1,6 +1,6 @@
 # 🗇 Safe area
 
-It really useful for fixed elements on screen
+It is really useful for fixed elements on screen
 
 <img src="https://cdn.dribbble.com/users/261602/screenshots/5947654/bottom_search.png" width="500" />
 
