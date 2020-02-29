@@ -29,6 +29,7 @@ const ToggleButton = ({onPress}) => {
 
   useEffect(() => {
     spring(animatedOffset.current, {
+      useNativeDriver: false,
       toValue: isDark ? 1 : 0,
       duration: 250,
     }).start();
