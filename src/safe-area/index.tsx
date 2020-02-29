@@ -9,7 +9,7 @@ import { state } from "./state";
 export { StylexSaveAreaConsumer } from "./StylexSaveAreaConsumer";
 export { SafeAreaProvider } from "./SafeAreaProvider";
 
-export const getSafeArea = <T extends {}>(): EdgeInsets => {
+export const getSafeArea = (): EdgeInsets => {
   onUse(SAFE_AREA_DEPENDENCY_KEY);
 
   return state.insets;

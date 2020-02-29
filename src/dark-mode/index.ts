@@ -7,7 +7,7 @@ import { state } from "./state";
 
 type UiType = "dark" | "light";
 
-export const uiMode = <T extends {}>({
+export const uiMode = <T>({
   dark,
   light
 }: { [mode in UiType]?: T }): T | undefined => {
@@ -24,8 +24,6 @@ export const uiMode = <T extends {}>({
   return undefined;
 };
 
-export const darkUiMode = <T extends {}>(dark: T): T | undefined =>
-  uiMode<T>({ dark });
+export const darkUiMode = <T>(dark: T): T | undefined => uiMode<T>({ dark });
 
-export const lightUiMode = <T extends {}>(light: T): T | undefined =>
-  uiMode<T>({ light });
+export const lightUiMode = <T>(light: T): T | undefined => uiMode<T>({ light });

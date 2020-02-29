@@ -4,10 +4,7 @@ import { getWindowDimensions } from "./dimensions/index";
 
 export const createDimensionQueryHelper = <Value>(
   queryFunction: (options: { value: Value; dimensions: ScaledSize }) => boolean
-) => <StyleObject extends {}>(
-  value: Value,
-  styles: StyleObject
-): null | StyleObject => {
+) => <T>(value: Value, styles: T): null | T => {
   const isMatched = queryFunction({ value, dimensions: getWindowDimensions() });
 
   if (isMatched) {
