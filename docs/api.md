@@ -2,45 +2,29 @@
 
 Also read:
 
-- [Typescript support](ts.md);
-- [Testing](testting.md).
-
-## Media Query support 💉
+- [Media query](media-query.md)
+- [Orientation](orientation.md)
+- [I18n](i18n.md)
+- [react-native-safe-area-view](safe-area.md)
+- [react-native-dark-mode](dark-mode.md);
+- [Typescript](ts.md);
+- [Testing with Jest](testting.md).
 
 Use a `makeUseStyles` function to create a hook function that can be used in react components
 
-Available media conditions:
+```typescript jsx
+import { makeUseStyles } from "react-native-stylex";
 
-- `maxWidth(number, { /* styles */ })`
-- `minWidth(number, { /* styles */ })`
-- `minHeight(number, { /* styles */ })`
-- `maxHeight(number, { /* styles */ })`
-
-**Example:**
-
-```js
-import { makeUseStyles, minWidth } from "react-native-stylex";
-
-const useStyles = makeUseStyles({
+const useStyles = makeUseStyles(theme => ({
   root: {
-    height: 200,
-    width: 200,
-    ...minWidth(320, {
-      height: 160,
-      width: 160
-    })
-  },
-  // Another syntax, `.row` property would be `null` or passed object
-  row: minWidth(320, {
-    height: 160,
-    width: 160
-  })
-});
+    color: theme.palette.xColor
+  }
+}));
 ```
 
 ## Using styles 🧲
 
-You use styles in function and class components:
+You can use styles in function or class components:
 
 ```js
 import React, { Component } from "react";
@@ -98,7 +82,8 @@ export default App;
 Then use a `makeUseStyles` function and extract passed theme ⚡️
 
 ```js
-import { makeUseStyles, minWidth } from "react-native-stylex";
+import { makeUseStyles } from "react-native-stylex";
+import { minWidth } from "react-native-stylex/media-query";
 
 // Theme-dependent styles
 const useStyles = makeUseStyles(({ palette, utils }) => ({

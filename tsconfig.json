@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "esnext",
-    "lib": ["es2018"],
+    "lib": ["es2020"],
     "skipLibCheck": true,
     "declaration": true,
     "outDir": "./lib",
@@ -11,5 +11,5 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": ["src/*"]
+  "include": ["src/**/*"]
 }

@@ -13,9 +13,16 @@ Better styling for react-native
 - 📦 Very light and simple;
 - ⚡️ Hooks support;
 - 🔋 Theming support;
-- ⛱️ [Typescript support](docs/ts.md);
-- 📝 [Easy integrated with jest](docs/testting.md);
-- 💉 CSS Media Queries syntax.
+- ⛱️ [Typescript](docs/ts.md);
+- 📝 [Easy integrated with Jest](docs/testting.md).
+
+### Integrations
+
+- 🗇 [react-native-safe-area-view](docs/safe-area.md)
+- 🕳️ [react-native-dark-mode](docs/dark-mode.md);
+- 🗺 [i18n](docs/i18n.md)
+- 📲 [Orientation](docs/orientation.md)
+- 💉 [Media Queries](docs/media-query.md) syntax.
 
 ### Links
 
@@ -63,7 +70,8 @@ Stylex provides a helper function to inject styles to your component.
 Normally, you’ll use it in this way:
 
 ```js
-import { makeUseStyles, maxWidth } from "react-native-stylex";
+import { makeUseStyles } from "react-native-stylex";
+import { maxWidth } from "react-native-stylex/media-query";
 
 const useStyles = makeUseStyles(({ palette, utils }) => ({
   root: {

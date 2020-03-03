@@ -1,22 +1,19 @@
-import React, { ComponentType, FC, forwardRef, Ref } from "react";
+import React, { ComponentType, forwardRef, Ref } from "react";
 
-function withStyles<Styles extends {}>(useStyles: () => Styles) {
-  return <Props extends {}>(
-    Component: ComponentType<
-      Props & {
-        styles: Styles;
-      }
-    >
-  ): FC<Props> => {
+export function withStyles<Styles extends {}>(useStyles: () => Styles) {
+  return <
+    Props extends {},
+    C extends ComponentType<Props & { styles: Styles }>
+  >(
+    Component: C
+  ) => {
     const WithStyles = (props: Props, ref: Ref<any>) => {
       const styles = useStyles();
 
+      // @ts-ignore
       return <Component {...props} ref={ref} styles={styles} />;
     };
 
-    // @ts-ignore
-    return forwardRef(WithStyles);
+    return forwardRef<C, Props>(WithStyles);
   };
 }
-
-export default withStyles;

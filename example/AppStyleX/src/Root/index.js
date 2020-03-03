@@ -19,6 +19,7 @@ const Root = ({toggleTheme}) => {
   return (
     <Animated.View style={[styles.root, bgStyle]}>
       <Circle />
+
       <Animated.Text style={[styles.title, textStyle]}>
         Choose a style
       </Animated.Text>
@@ -28,8 +29,8 @@ const Root = ({toggleTheme}) => {
       <Animated.Text style={[styles.text, textStyle]}>
         Customize your interface.
       </Animated.Text>
-      <ToggleButton onPress={toggleTheme} />
 
+      <ToggleButton onPress={toggleTheme} />
       <BottomNav />
     </Animated.View>
   );

@@ -22,9 +22,11 @@ const BottomNav = () => {
       <Animated.Text style={[styles.skipBtn, skipAnimatedStyle]}>
         Skip
       </Animated.Text>
-      <Animated.Text style={[styles.nextButton, bgStyle, textStyle]}>
-        →
-      </Animated.Text>
+      <Animated.View style={[styles.nextButton, bgStyle]}>
+        <Animated.Text style={[styles.nextButtonText, textStyle]}>
+          →
+        </Animated.Text>
+      </Animated.View>
     </>
   );
 };

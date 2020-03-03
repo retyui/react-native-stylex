@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Animated } from "react-native";
 
-import useTheme from "./useTheme";
+import { useTheme } from "./useTheme";
 
 const { Value, timing } = Animated;
 
 const INITIAL_VALUE = 0;
 const defaultOptions = { duration: 250 };
 
-const useColorTransition = <Theme>(
+export const useColorTransition = <Theme>(
   colorGetterFn: (theme: Theme) => string,
   options = defaultOptions
 ) => {
@@ -48,5 +48,3 @@ const useColorTransition = <Theme>(
     });
   }, [prev, current]);
 };
-
-export default useColorTransition;
