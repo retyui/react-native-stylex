@@ -1,3 +1,7 @@
+# 2.1.0
+
+- Add integrations with [react-native-appearance](docs/appearance.md)
+
 # 2.0.0
 
 Deprecate first argument as object `makeUseStyles({ styles: {color: 'red'}})` now only functions allow `makeUseStyles (() => (({ styles: {color : 'red'}}))`
@@ -8,8 +12,8 @@ Add integrations with third party modules\APIs:
 
 - [media-query](docs/media-query.md)
 - [orientation](docs/orientation.md)
-- [react native safe area](docs/safe-area.md)
-- [react native dark mode](docs/safe-area.md)
+- [react-native-safe-area](docs/safe-area.md)
+- [react-native-dark-mode](docs/safe-area.md)
 - [i18n](docs/i18n.md)
 
 # 1.1.3

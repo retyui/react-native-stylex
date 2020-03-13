@@ -18,10 +18,10 @@ Better styling for react-native
 
 ### Integrations
 
-- 🗇 [react-native-safe-area-view](docs/safe-area.md)
-- 🕳️ [react-native-dark-mode](docs/dark-mode.md);
-- 🗺 [i18n](docs/i18n.md)
-- 📲 [Orientation](docs/orientation.md)
+- 🛡️ [react-native-safe-area-view](docs/safe-area.md);
+- 🕳️ [react-native-dark-mode](docs/dark-mode.md), [react-native-appearance](docs/appearance.md);
+- 🗺 [i18n](docs/i18n.md);
+- 📲 [Orientation](docs/orientation.md);
 - 💉 [Media Queries](docs/media-query.md) syntax.
 
 ### Links
