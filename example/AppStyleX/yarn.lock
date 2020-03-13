@@ -4054,10 +4054,10 @@ react-native-safe-area-view@^1.0.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-react-native-stylex@^2.1.0-beta.0:
-  version "2.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/react-native-stylex/-/react-native-stylex-2.1.0-beta.0.tgz#0e6c14dd1d7f2e10171668eaf4e6e990bd9848bb"
-  integrity sha512-UoXdq2pBoYQM2YKI6GiJ5jGojjOXvfyfAIJu7gFDSbgoM64fHq1tSmlYoBi5NwsANn22+bkNXVdk7+kL81n0Hg==
+react-native-stylex@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-stylex/-/react-native-stylex-2.2.0.tgz#4bd6c49cc74b59d7c65018d9c0fca4fab51d91d5"
+  integrity sha512-x49zA8Ir8BX3ajo7KZqjqY37yWsvyrNcSbMO9rCPYZAZX4TXvIxCmtzUILKcLLD4s7w6GJM5oYxvrYj/xNHd8A==
 
 react-native@0.62.0-rc.3:
   version "0.62.0-rc.3"

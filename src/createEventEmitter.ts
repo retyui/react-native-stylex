@@ -1,14 +1,15 @@
-// @ts-ignore
-import EventEmitter from "react-native/Libraries/vendor/emitter/EventEmitter";
+type Handler = () => void;
 
-const eventEmitter = new EventEmitter();
+const events: Record<string, Array<Handler>> = {};
 
 export const createEventEmitter = (event: string) => {
-  const emit = () => eventEmitter.emit(event);
-  const on = (handler: () => void) => {
-    eventEmitter.addListener(event, handler);
+  const emit = () => (events[event] || []).forEach(fn => fn());
+  const on = (cb: Handler) => {
+    (events[event] = events[event] || []).push(cb);
 
-    return () => eventEmitter.removeListener(event, handler);
+    return () => {
+      events[event] = events[event].filter(fn => fn !== cb);
+    };
   };
 
   return { on, emit };

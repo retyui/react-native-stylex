@@ -1,3 +1,7 @@
+# 2.2.0
+
+- Fix expo issue `Unable to resolve module 'module://EmitterSubscription.js'`
+
 # 2.1.0
 
 - Add integrations with [react-native-appearance](docs/appearance.md)

@@ -29,3 +29,9 @@ it("should not call handler when unsubscribe", () => {
 
   expect(handler).toHaveBeenCalledTimes(1);
 });
+
+it("should throw error when no subscribed functions", () => {
+  const a = createEventEmitter("test");
+
+  a.emit();
+});
