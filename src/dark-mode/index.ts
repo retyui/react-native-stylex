@@ -5,7 +5,7 @@ import { onUse } from "../dependencyUsage";
 import { UI_MODE_DEPENDENCY_KEY } from "./consts";
 import { state } from "./state";
 
-type UiType = "dark" | "light";
+export type UiType = "dark" | "light";
 
 export const uiMode = <T>({
   dark,

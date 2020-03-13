@@ -1,4 +1,4 @@
-# 🗇 Safe area
+# 🛡️ Safe area
 
 It is really useful for fixed elements on screen
 
