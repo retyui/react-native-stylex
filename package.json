@@ -1,6 +1,6 @@
 {
   "name": "react-native-stylex",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": "git@github.com:retyui/react-native-stylex.git",
@@ -25,6 +25,7 @@
     "jest": "^25.1.0",
     "react": "^16.13.0",
     "react-native": "^0.61.5",
+    "react-native-appearance": "^0.3.3",
     "react-native-dark-mode": "^0.2.2",
     "react-native-safe-area-context": "^0.7.3",
     "typescript": "^3.7.5"
