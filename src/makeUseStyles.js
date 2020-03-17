@@ -9,6 +9,7 @@ import { useTheme } from "./useTheme";
 export const getDependenciesKeys = () =>
   Object.keys(optimizeDependencies(getUsing())).sort();
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 export const noop = () => {};
 
 export const subscribe = (dependenciesKeys, handler) => {
