@@ -11,7 +11,7 @@
     "build": "yarn tsc",
     "postbuild": "rm -rf lib/__tests__ && cp src/*.d.ts lib/",
     "bundleLib": "yarn test && yarn build && npx clear-package-json package.json > lib/package.json && cp CHANGELOG.md LICENSE README.md lib",
-    "lint": "eslint './src/*.{js,ts,tsx}' --quiet --fix",
+    "lint": "eslint './src/*.{js,ts,tsx}' --quiet",
     "test": "jest --coverage"
   },
   "peerDependencies": {
@@ -19,12 +19,12 @@
     "react-native": ">=0.59.0"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.2",
-    "@types/react": "^16.9.20",
-    "@types/react-native": "^0.61.15",
+    "@types/jest": "^25.1.4",
+    "@types/react": "^16.9.23",
+    "@types/react-native": "^0.61.22",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
-    "clean-publish": "^1.1.5",
+    "clean-publish": "^1.1.6",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -36,6 +36,6 @@
     "react-native-appearance": "^0.3.3",
     "react-native-dark-mode": "^0.2.2",
     "react-native-safe-area-context": "^0.7.3",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   }
 }
