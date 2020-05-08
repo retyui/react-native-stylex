@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "rm -rf lib/*",
     "build": "yarn tsc",
-    "postbuild": "rm -rf lib/__tests__ && cp src/*.d.ts lib/",
+    "postbuild": "rm -rf lib/__tests__ && cp src/*.d.ts lib/ && prettier --write lib/*.js lib/*.d.ts",
     "bundleLib": "yarn test && yarn build && npx clear-package-json package.json > lib/package.json && cp CHANGELOG.md LICENSE README.md lib",
     "lint": "eslint './src/*.{js,ts,tsx}' --quiet",
     "test": "jest --coverage"

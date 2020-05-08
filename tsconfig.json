@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "target": "esnext",
-    "lib": ["es2020"],
+    "target": "ESNext",
+    "lib": ["ESNext"],
     "skipLibCheck": true,
     "declaration": true,
     "outDir": "./lib",
