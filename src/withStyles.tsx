@@ -1,19 +1,21 @@
-import React, { ComponentType, forwardRef, Ref } from "react";
+import * as React from "react";
 
-export function withStyles<Styles extends {}>(useStyles: () => Styles) {
+export function withStyles<Styles extends Record<string, unknown>>(
+  useStyles: () => Styles
+) {
   return <
-    Props extends {},
-    C extends ComponentType<Props & { styles: Styles }>
+    Props extends Record<string, unknown>,
+    C extends React.ComponentType<Props & { styles: Styles }>
   >(
     Component: C
   ) => {
-    const WithStyles = (props: Props, ref: Ref<any>) => {
+    const WithStyles = (props: Props, ref: React.Ref<any>) => {
       const styles = useStyles();
 
       // @ts-ignore
       return <Component {...props} ref={ref} styles={styles} />;
     };
 
-    return forwardRef<C, Props>(WithStyles);
+    return React.forwardRef<C, Props>(WithStyles);
   };
 }
