@@ -1,3 +1,9 @@
+# 3.0.0
+
+- Add support for the latest [react-native-safe-area-context@1.0.0](https://github.com/th3rdwave/react-native-safe-area-context/releases/tag/v1.0.0) API
+- Publish a compatible bundle
+- Update dev deps
+
 # 2.2.0
 
 - Fix expo issue `Unable to resolve module 'module://EmitterSubscription.js'`
