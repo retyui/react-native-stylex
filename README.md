@@ -4,9 +4,11 @@
 
 Better styling for react-native
 
-[![npm](https://img.shields.io/npm/v/react-native-stylex.svg)](https://www.npmjs.com/package/react-native-stylex)
+[![npm page](https://img.shields.io/npm/v/react-native-stylex.svg)](https://www.npmjs.com/package/react-native-stylex)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-stylex.svg)](https://www.npmtrends.com/react-native-stylex)
-[![CI](https://github.com/retyui/react-native-stylex/workflows/Node.js%20CI/badge.svg)](https://github.com/retyui/react-native-stylex/actions)
+[![react-native-stylex size](https://img.shields.io/bundlephobia/minzip/react-native-stylex)](https://bundlephobia.com/result?p=react-native-stylex)
+[![CI status](https://github.com/retyui/react-native-stylex/workflows/Node.js%20CI/badge.svg)](https://github.com/retyui/react-native-stylex/actions)
+
 
 ### Module features:
 
