@@ -1,11 +1,11 @@
 // @ts-ignore
-import { useSafeArea } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { emit } from "./eventEmitter";
 import { state } from "./state";
 
 export const StylexSaveAreaConsumer = () => {
-  const insets = useSafeArea();
+  const insets = useSafeAreaInsets();
   const isChanged = Object.entries(insets).some(
     ([key, value]) => state.insets[key] !== value
   );

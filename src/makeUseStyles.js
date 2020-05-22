@@ -34,14 +34,14 @@ export const subscribe = (dependenciesKeys, handler) => {
           }
         : Boolean
     )
-    .map(onChange => onChange(handler));
+    .map((onChange) => onChange(handler));
 
   return () => {
-    unsubscribeFns.forEach(unsubscribe => unsubscribe());
+    unsubscribeFns.forEach((unsubscribe) => unsubscribe());
   };
 };
 
-export const makeUseStyles = getStyles => {
+export const makeUseStyles = (getStyles) => {
   const hasThemeDependency = getStyles.length === 1;
   const useStyles = () => {
     const theme = useTheme();
@@ -70,7 +70,7 @@ export const makeUseStyles = getStyles => {
 
       const styles = StyleSheet.create(getStyles(theme));
       const keys = getDependenciesKeys();
-      const handler = () => forceUpdate(flag => !flag);
+      const handler = () => forceUpdate((flag) => !flag);
 
       unsubscribeRef.current = subscribe(keys, handler);
 
@@ -78,7 +78,7 @@ export const makeUseStyles = getStyles => {
     }, [
       // Don't use `theme` as dependency when passed styled are not function
       hasThemeDependency ? theme : null,
-      forceUpdateFlag
+      forceUpdateFlag,
     ]);
   };
 

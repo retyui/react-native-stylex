@@ -4,7 +4,7 @@ type OrientationType = "portrait" | "landscape";
 
 export const orientation = <T>({
   portrait,
-  landscape
+  landscape,
 }: { [orientation in OrientationType]?: T }): T | undefined => {
   const { height, width } = getScreenDimensions();
 

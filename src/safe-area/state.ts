@@ -1,11 +1,13 @@
 // @ts-ignore
-import { initialWindowSafeAreaInsets } from "react-native-safe-area-context";
+import { initialWindowMetrics } from "react-native-safe-area-context";
+
+const defaultInsets = {
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+};
 
 export const state = {
-  insets: initialWindowSafeAreaInsets || {
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0
-  }
+  insets: initialWindowMetrics?.insets || defaultInsets,
 };
