@@ -4,11 +4,10 @@
 
 Better styling for react-native
 
-[![npm page](https://img.shields.io/npm/v/react-native-stylex.svg)](https://www.npmjs.com/package/react-native-stylex)
-[![npm downloads](https://img.shields.io/npm/dm/react-native-stylex.svg)](https://www.npmtrends.com/react-native-stylex)
-[![react-native-stylex size](https://img.shields.io/bundlephobia/minzip/react-native-stylex)](https://bundlephobia.com/result?p=react-native-stylex)
+[![react-native-stylex on npm](https://img.shields.io/npm/v/react-native-stylex.svg)](http://www.npmjs.com/package/react-native-stylex)
+[![react-native-stylex downloads](https://img.shields.io/npm/dm/react-native-stylex.svg)](https://www.npmtrends.com/react-native-stylex)
+[![react-native-stylex bundle size](https://img.shields.io/bundlephobia/minzip/react-nativ-stylex)](https://bundlephobia.com/result?p=react-native-stylex)
 [![CI status](https://github.com/retyui/react-native-stylex/workflows/Node.js%20CI/badge.svg)](https://github.com/retyui/react-native-stylex/actions)
-
 
 ### Module features:
 
@@ -53,7 +52,7 @@ import { ThemeProvider } from "react-native-stylex";
 
 const theme = {
   palette: { textColor: "black" },
-  utils: { fade: (color, value) => {} }
+  utils: { fade: (color, value) => {} },
 };
 
 const Root = () => (
@@ -80,10 +79,10 @@ const useStyles = makeUseStyles(({ palette, utils }) => ({
     color: utils.fade(palette.text.textColor, 0.5),
     height: 100,
     // On screens that are 320 or less, set the height to 69
-    ...maxWidth(320, { height: 69 })
+    ...maxWidth(320, { height: 69 }),
   },
   // Another syntax, `.row` property would be `null` or passed object
-  point: maxWidth(320, { height: 4, width: 4 })
+  point: maxWidth(320, { height: 4, width: 4 }),
 }));
 
 export default useStyles;
