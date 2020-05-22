@@ -4,7 +4,7 @@ type LayoutDirectionType = "rtl" | "ltr";
 
 export const i18n = <T>({
   rtl,
-  ltr
+  ltr,
 }: { [direction in LayoutDirectionType]?: T }): T | undefined => {
   if (I18nManager.isRTL) {
     return rtl;

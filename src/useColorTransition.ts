@@ -18,14 +18,14 @@ export const useColorTransition = <Theme>(
   const colors = useRef({
     toValue: INITIAL_VALUE,
     prev: currentColor,
-    current: currentColor
+    current: currentColor,
   });
 
   if (currentColor !== colors.current.current) {
     colors.current = {
       toValue: colors.current.toValue === 0 ? 1 : 0,
       prev: colors.current.current,
-      current: currentColor
+      current: currentColor,
     };
   }
 
@@ -35,7 +35,7 @@ export const useColorTransition = <Theme>(
     timing(animatedValue.current, {
       toValue,
       useNativeDriver: false,
-      ...options
+      ...options,
     }).start();
   }, [toValue]);
 
@@ -44,7 +44,7 @@ export const useColorTransition = <Theme>(
 
     return animatedValue.current.interpolate({
       inputRange: [0, 1],
-      outputRange
+      outputRange,
     });
   }, [prev, current]);
 };

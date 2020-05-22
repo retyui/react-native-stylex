@@ -6,7 +6,7 @@ export const addDependency = (name: string, onChange: SubscribeFn) => {
   if (!registry[name]) {
     Object.defineProperty(registry, name, {
       value: onChange,
-      writable: false
+      writable: false,
     });
   }
 };

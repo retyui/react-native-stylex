@@ -4,5 +4,5 @@ export const themeContext = createContext({});
 
 export const {
   Provider: ThemeProvider,
-  Consumer: ThemeConsumer
+  Consumer: ThemeConsumer,
 } = themeContext;
