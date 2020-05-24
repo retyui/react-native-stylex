@@ -1,3 +1,7 @@
+# 3.1.0
+
+- Replace custom module [react-native-appearance](https://github.com/expo/react-native-appearance) with core [react-native Appearance](https://reactnative.dev/docs/appearance)
+
 # 3.0.0
 
 - Add support for the latest [react-native-safe-area-context@1.0.0](https://github.com/th3rdwave/react-native-safe-area-context/releases/tag/v1.0.0) API
