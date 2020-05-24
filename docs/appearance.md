@@ -1,13 +1,16 @@
 # Appearance 🕳️
 
-To start using integration with [react-native-appearance](https://github.com/expo/react-native-appearance) module
-, you need to install it. [Follow the instructions in the README](https://github.com/expo/react-native-appearance).
+To start using integration with [react-native Appearance](https://reactnative.dev/docs/appearance) module, you need to use react-native [0.62.x](https://reactnative.dev/blog/2020/03/26/version-0.62#new-dark-mode-features).
 
 After that you can use special API:
 
-- `appearance({ dark, light })`
+- `appearance({ dark, light, default })`
 - `darkAppearance(value)`
 - `lightAppearance(value)`
+
+`dark` - The user prefers a dark color theme.
+`light` - The user prefers a light color theme.
+`default` - The user has not indicated a preferred color theme.
 
 **Example:**
 
@@ -17,7 +20,7 @@ import {
   appearance,
   darkAppearance,
   lightAppearance,
-  noPreferenceAppearance
+  noPreferenceAppearance,
 } from "react-native-stylex/appearance";
 
 export default makeUseStyles(() => ({
@@ -25,24 +28,24 @@ export default makeUseStyles(() => ({
     // you can pass styles
     ...appearance({
       dark: { color: "#fff", backgroundColor: "#000" },
-      light: { color: "#000", backgroundColor: "#fff" }
+      light: { color: "#000", backgroundColor: "#fff" },
     }),
 
     // or string value for property
-    backgroundColor: appearance({ dark: "#000", light: "#fff" })
+    backgroundColor: appearance({ dark: "#000", light: "#fff" }),
   },
   cell: {
     // styles variant
     ...lightAppearance({ color: "#000" }),
     // specific value variant
-    backgroundColor: lightAppearance("#fff")
+    backgroundColor: lightAppearance("#fff"),
   },
 
   row: {
     // styles variant
     ...darkAppearance({ color: "#000" }),
     // specific value variant
-    backgroundColor: darkAppearance("#fff")
-  }
+    backgroundColor: darkAppearance("#fff"),
+  },
 }));
 ```
