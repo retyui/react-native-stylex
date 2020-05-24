@@ -1,5 +1,4 @@
-// @ts-ignore
-import { Appearance } from "react-native-appearance";
+import { Appearance } from "react-native";
 
 import { addDependency } from "../dependencyRegistry";
 import { createEventEmitter } from "../createEventEmitter";
