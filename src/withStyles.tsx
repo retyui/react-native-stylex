@@ -1,21 +1,45 @@
-import * as React from "react";
+import React, {
+  ComponentClass,
+  ComponentProps,
+  ComponentType,
+  ExoticComponent,
+  forwardRef,
+  Ref,
+  RefAttributes,
+} from "react";
 
-export function withStyles<Styles extends Record<string, unknown>>(
-  useStyles: () => Styles
-) {
-  return <
-    Props extends Record<string, unknown>,
-    C extends React.ComponentType<Props & { styles: Styles }>
-  >(
-    Component: C
-  ) => {
-    const WithStyles = (props: Props, ref: React.Ref<any>) => {
+interface InjectedStyledProps<Styles> {
+  styles: Styles;
+}
+
+export type InferInjectedStyledProps<
+  Fn extends (...args: any) => any
+> = InjectedStyledProps<ReturnType<Fn>>;
+
+type InferRefType<T> = T extends ExoticComponent<infer Props>
+  ? Props extends RefAttributes<infer RefType>
+    ? RefType
+    : never
+  : T extends ComponentClass<any>
+  ? InstanceType<T>
+  : never;
+
+export function withStyles<Styles>(useStyles: () => Styles) {
+  function WithStyles<TComponent extends ComponentType<any>>(
+    Component: TComponent
+  ) {
+    const WithStyles = (
+      props: Omit<ComponentProps<TComponent>, "styles">,
+      ref: Ref<InferRefType<TComponent>>
+    ) => {
       const styles = useStyles();
 
-      // @ts-ignore
+      // @ts-expect-error: 'ref' as never
       return <Component {...props} ref={ref} styles={styles} />;
     };
 
-    return React.forwardRef<C, Props>(WithStyles);
-  };
+    return forwardRef(WithStyles);
+  }
+
+  return WithStyles;
 }

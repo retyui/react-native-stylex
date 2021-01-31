@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Animated } from "react-native";
-
+import { DefaultTheme } from "./DefaultTheme";
 import { useTheme } from "./useTheme";
 
 const { Value, timing } = Animated;
@@ -8,10 +8,10 @@ const { Value, timing } = Animated;
 const INITIAL_VALUE = 0;
 const defaultOptions = { duration: 250 };
 
-export const useColorTransition = <Theme>(
+export function useColorTransition<Theme = DefaultTheme>(
   colorGetterFn: (theme: Theme) => string,
   options = defaultOptions
-) => {
+): Animated.AnimatedInterpolation {
   const theme = useTheme<Theme>();
   const currentColor = colorGetterFn(theme);
   const animatedValue = useRef(new Value(INITIAL_VALUE));
@@ -47,4 +47,4 @@ export const useColorTransition = <Theme>(
       outputRange,
     });
   }, [prev, current]);
-};
+}

@@ -1,5 +1,3 @@
-<div align="center"><img src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/docs/logo.png" width="456"/></div>
-
 # react-native-stylex
 
 Better styling for react-native
@@ -9,19 +7,22 @@ Better styling for react-native
 [![react-native-stylex bundle size](https://badgen.net/bundlephobia/minzip/react-native-stylex)](https://bundlephobia.com/result?p=react-native-stylex)
 [![CI status](https://github.com/retyui/react-native-stylex/workflows/Node.js%20CI/badge.svg)](https://github.com/retyui/react-native-stylex/actions)
 
+<div align="center"><img src="https://raw.githubusercontent.com/retyui/react-native-stylex/master/docs/logo.png" width="333"/></div>
+
 ### Module features:
 
 - 📦 Very light and simple;
-- ⚡️ Hooks support;
+- ⚡️ Hooks \ HoC support;
 - 🔋 Theming support;
-- ⛱️ [Typescript](docs/ts.md);
+- ⛱️ [Typescript support](docs/ts.md);
 - 📝 [Easy integrated with Jest](docs/testting.md).
 
 ### Integrations
 
 - 🛡️ [react-native-safe-area-view](docs/safe-area.md);
 - 🗺 [i18n](docs/i18n.md);
-- 🕳️ [Appearance](docs/appearance.md), [react-native-dark-mode](docs/dark-mode.md);
+- 🕳️ [Appearance (a.k.a Dark mode)](docs/appearance.md);
+- 📐 [Dimensions](docs/dimensions.md);
 - 📲 [Orientation](docs/orientation.md);
 - 💉 [Media Queries](docs/media-query.md) syntax.
 
@@ -74,18 +75,14 @@ Normally, you’ll use it in this way:
 import { makeUseStyles } from "react-native-stylex";
 import { maxWidth } from "react-native-stylex/media-query";
 
-const useStyles = makeUseStyles(({ palette, utils }) => ({
+export const useStyles = makeUseStyles(({ palette, utils }) => ({
   root: {
-    color: utils.fade(palette.text.textColor, 0.5),
+    color: utils.fade(palette.textColor, 0.5),
     height: 100,
     // On screens that are 320 or less, set the height to 69
     ...maxWidth(320, { height: 69 }),
   },
-  // Another syntax, `.row` property would be `null` or passed object
-  point: maxWidth(320, { height: 4, width: 4 }),
 }));
-
-export default useStyles;
 ```
 
 #### 4️⃣ Inject styles `useStyles(...)` & `withStyles(...)`
@@ -112,9 +109,13 @@ class Root extends Component {
   render() {
     const { styles } = this.props;
 
-    return <View style={styles.row} />;
+    return <View style={styles.root} />;
   }
 }
 
 export default withStyles(useStyles)(Root);
 ```
+
+### 5️⃣ Do you use a Typescript ?
+
+- Look at [typescript](docs/ts.md) guide

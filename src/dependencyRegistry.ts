@@ -1,15 +1,21 @@
-type SubscribeFn = (handler: () => void) => () => void;
+type UnSubscribeFn = () => void;
+type SubscribeFn = (handler: () => void) => UnSubscribeFn;
 
-const registry: Record<string, SubscribeFn> = {};
+interface Registry {
+  [dependencyName: string]: SubscribeFn;
+}
 
-export const addDependency = (name: string, onChange: SubscribeFn) => {
+const registry: Registry = {};
+
+export function addDependency(name: string, onChange: SubscribeFn): void {
   if (!registry[name]) {
     Object.defineProperty(registry, name, {
       value: onChange,
       writable: false,
     });
   }
-};
+}
 
-export const getDependency = (name: string): SubscribeFn | undefined =>
-  registry[name];
+export function getDependency(name: string): SubscribeFn | undefined {
+  return registry[name];
+}

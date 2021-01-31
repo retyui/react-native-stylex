@@ -20,7 +20,7 @@ import { makeUseStyles } from "react-native-stylex";
 import {
   orientation,
   portraitOrientation,
-  landscapeOrientation
+  landscapeOrientation,
 } from "react-native-stylex/orientation";
 
 const useStyles = makeUseStyles(() => ({
@@ -28,17 +28,17 @@ const useStyles = makeUseStyles(() => ({
     backgroundColor: "red",
     ...orientation({
       portrait: { alignSelf: "flex-start" },
-      landscape: { alignSelf: "flex-end" }
-    })
+      landscape: { alignSelf: "flex-end" },
+    }),
   },
   row: {
-    width: portraitOrientation(100)
+    width: portraitOrientation(100),
   },
   root: {
     ...landscapeOrientation({
       top: 10,
-      left: 10
-    })
-  }
+      left: 10,
+    }),
+  },
 }));
 ```

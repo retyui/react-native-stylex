@@ -1,18 +1,17 @@
-import { getScreenDimensions } from "./dimensions/index";
+import { getScreenDimensions } from "./dimensions";
 
 type OrientationType = "portrait" | "landscape";
 
-export const orientation = <T>({
-  portrait,
-  landscape,
-}: { [orientation in OrientationType]?: T }): T | undefined => {
+export function orientation<T>(
+  spec: { [orientation in OrientationType]?: T }
+): T | undefined {
   const { height, width } = getScreenDimensions();
 
-  return width <= height ? portrait : landscape;
-};
+  return width <= height ? spec.portrait : spec.landscape;
+}
 
-export const portraitOrientation = <T>(portraitStyles: T) =>
+export const portraitOrientation = <T>(portraitStyles: T): T | undefined =>
   orientation<T>({ portrait: portraitStyles });
 
-export const landscapeOrientation = <T>(landscapeStyles: T) =>
+export const landscapeOrientation = <T>(landscapeStyles: T): T | undefined =>
   orientation<T>({ landscape: landscapeStyles });

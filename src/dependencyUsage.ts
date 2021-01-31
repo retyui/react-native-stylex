@@ -1,11 +1,21 @@
-const ref: { current: Record<string, boolean> } = { current: {} };
+interface UsingSpec {
+  [dependencyName: string]: boolean;
+}
 
-export const resetUsing = () => {
+interface Ref {
+  current: UsingSpec;
+}
+
+const ref: Ref = { current: {} };
+
+export function resetUsing(): void {
   ref.current = {};
-};
+}
 
-export const getUsing = () => ({ ...ref.current });
+export function getUsing(): UsingSpec {
+  return { ...ref.current };
+}
 
-export const onUse = (name: string) => {
+export function onUse(name: string): void {
   ref.current[name] = true;
-};
+}

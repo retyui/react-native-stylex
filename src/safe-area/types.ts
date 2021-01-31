@@ -1,4 +1,4 @@
-import * as React from "react";
+import { ReactNode } from "react";
 
 export interface EdgeInsets {
   top: number;
@@ -8,6 +8,6 @@ export interface EdgeInsets {
 }
 
 export interface SafeAreaViewProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   initialSafeAreaInsets?: EdgeInsets | null;
 }

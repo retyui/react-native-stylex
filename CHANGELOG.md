@@ -1,3 +1,25 @@
+# 4.0.0
+
+- Optimize memory usage [#9](https://github.com/retyui/react-native-stylex/issues/9)
+
+```js
+// 4.x.x
+useStyles() === useStyles(); // true
+// 1.x.x - 3.x.x
+useStyles() === useStyles(); // false
+```
+
+- Add [dimensions api](docs/dimensions.md)
+- Improve [typescript support](docs/ts.md)
+- Add tests for types
+- Update dev dependencies
+
+**Breaking changes:**
+
+- Type `MakeUseStylesFn<TTheme>` was removed!
+  Use [declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) to define type for `Theme`.
+  More info [typescript guide](docs/ts.md)...
+
 # 3.1.0
 
 - Replace custom module [react-native-appearance](https://github.com/expo/react-native-appearance) with core [react-native Appearance](https://reactnative.dev/docs/appearance)

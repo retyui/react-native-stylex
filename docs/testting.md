@@ -12,7 +12,7 @@ import { ThemeProvider } from "react-native-stylex";
 
 import { defaultTheme } from "./my-theme";
 
-export const MockThemeProvider = props => (
+export const MockThemeProvider = (props) => (
   <ThemeProvider {...props} value={defaultTheme} />
 );
 ```
@@ -36,7 +36,7 @@ const testRenderer = TestRenderer.create(
 
 ## Troubleshooting
 
-### **`SyntaxError: Unexpected token export\import` in react-native-stylex/lib/index.js**
+### **`SyntaxError: Unexpected token export\import` in react-native-stylex/...**
 
 You need to point Jest to transform this package. You can do so, by adding module path to `transformIgnorePatterns` setting in Jest's configuration.
 
