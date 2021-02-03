@@ -11,8 +11,8 @@ const state = { window: get("window"), screen: get("screen") };
 const windowEventEmitter = createEventEmitter(WINDOW_DEPENDENCY_KEY);
 const screenEventEmitter = createEventEmitter(SCREEN_DEPENDENCY_KEY);
 
-const isNotEqual = ({ width, height }: ScaledSize, b: ScaledSize) =>
-  width !== b.width || height !== b.height;
+const isNotEqual = (a: ScaledSize, b: ScaledSize) =>
+  a.width !== b.width || a.height !== b.height;
 
 addDependency(WINDOW_DEPENDENCY_KEY, (handler: () => void) =>
   windowEventEmitter.on(handler)

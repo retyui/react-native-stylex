@@ -1,20 +1,23 @@
-// @ts-ignore
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { EdgeInsets } from "./types";
 
 import { emit } from "./eventEmitter";
 import { state } from "./state";
+import { useEffect } from "react";
 
-export const StylexSaveAreaConsumer = () => {
-  const insets = useSafeAreaInsets();
-  const isChanged = Object.entries(insets).some(
-    ([key, value]) => state.insets[key] !== value
-  );
+export function StylexSaveAreaConsumer(): JSX.Element | null {
+  const insets: EdgeInsets = useSafeAreaInsets();
 
-  if (isChanged) {
-    state.insets = insets;
+  useEffect(() => {
+    const isChanged = Object.entries(insets).some(
+      ([key, value]) => state.insets[key as keyof EdgeInsets] !== value
+    );
 
-    emit();
-  }
+    if (isChanged) {
+      state.insets = insets;
+      emit();
+    }
+  }, [insets]);
 
   return null;
-};
+}

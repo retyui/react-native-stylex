@@ -1,9 +1,19 @@
+import type { Mode } from "react-native-dark-mode";
+
+import { darkUiMode, lightUiMode } from "../dark-mode";
 import { state } from "../dark-mode/state";
-import { darkUiMode, lightUiMode } from "../dark-mode/index";
+
+jest.mock("react-native-dark-mode", () => ({
+  initialMode: "light",
+  eventEmitter: { on: jest.fn() },
+}));
 
 const mockStyles = { color: "red" };
 
-const mutateUiMode = (mode: null | "dark" | "light") => (state.mode = mode);
+const mutateUiMode = (mode: Mode | null) => {
+  // @ts-expect-error: for test only add null
+  state.mode = mode;
+};
 
 describe("darkUiMode", () => {
   it("should return style when dark mode", () => {
@@ -44,4 +54,3 @@ describe("lightUiMode", () => {
     expect(lightUiMode(mockStyles)).toBeUndefined();
   });
 });
-

@@ -8,11 +8,11 @@ import { UI_MODE_DEPENDENCY_KEY } from "./consts";
 
 export type ColorSchemeName = "light" | "dark" | "default";
 
-export const appearance = <T>({
+export function appearance<T>({
   dark,
   light,
   default: defaultScheme,
-}: { [mode in ColorSchemeName]?: T }): T | undefined => {
+}: { [mode in ColorSchemeName]?: T }): T | undefined {
   onUse(UI_MODE_DEPENDENCY_KEY);
 
   // Note: getColorScheme() will always return light when debugging with Chrome.
@@ -25,7 +25,7 @@ export const appearance = <T>({
   }
 
   return defaultScheme;
-};
+}
 
 export const darkAppearance = <T>(dark: T): T | undefined =>
   appearance<T>({ dark });

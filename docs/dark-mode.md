@@ -1,5 +1,7 @@
 # Dark mode 🕳️
 
+> ⚠️ If you use React Native `0.62.x` and higher, please use [Appearance](docs/appearance.md)
+
 To start using integration with [react-native-dark-mode](https://github.com/codemotionapps/react-native-dark-mode) module
 
 You need just install it using [instructions](https://github.com/codemotionapps/react-native-dark-mode#installation)!
@@ -16,29 +18,29 @@ After that you can use special API:
 import { makeUseStyles } from "react-native-stylex";
 import { uiMode, darkUiMode, lightUiMode } from "react-native-stylex/dark-mode";
 
-export default makeUseStyles(() => ({
+export const useStyles = makeUseStyles(() => ({
   root: {
     // you can pass styles
     ...uiMode({
       dark: { color: "#fff", backgroundColor: "#000" },
-      light: { color: "#000", backgroundColor: "#fff" }
+      light: { color: "#000", backgroundColor: "#fff" },
     }),
 
     // or string value for property
-    backgroundColor: uiMode({ dark: "#000", light: "#fff" })
+    backgroundColor: uiMode({ dark: "#000", light: "#fff" }),
   },
   cell: {
     // styles variant
     ...lightUiMode({ color: "#000" }),
     // specific value variant
-    backgroundColor: lightUiMode("#fff")
+    backgroundColor: lightUiMode("#fff"),
   },
 
   row: {
     // styles variant
     ...darkUiMode({ color: "#000" }),
     // specific value variant
-    backgroundColor: darkUiMode("#fff")
-  }
+    backgroundColor: darkUiMode("#fff"),
+  },
 }));
 ```

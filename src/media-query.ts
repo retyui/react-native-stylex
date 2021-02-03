@@ -1,6 +1,6 @@
 import { ScaledSize } from "react-native";
 
-import { getWindowDimensions } from "./dimensions/index";
+import { getWindowDimensions } from "./dimensions";
 
 export const createDimensionQueryHelper = <Value>(
   queryFunction: (options: { value: Value; dimensions: ScaledSize }) => boolean

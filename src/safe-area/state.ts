@@ -1,4 +1,3 @@
-// @ts-ignore
 import { initialWindowMetrics as metrics } from "react-native-safe-area-context";
 
 const defaultInsets = {
@@ -9,5 +8,5 @@ const defaultInsets = {
 };
 
 export const state = {
-  insets: (metrics && metrics.insets) || defaultInsets,
+  insets: metrics?.insets || defaultInsets,
 };

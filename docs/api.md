@@ -12,13 +12,13 @@ Also read:
 
 Use a `makeUseStyles` function to create a hook function that can be used in react components
 
-```typescript jsx
+```js
 import { makeUseStyles } from "react-native-stylex";
 
-const useStyles = makeUseStyles(theme => ({
+export const useStyles = makeUseStyles((theme) => ({
   root: {
-    color: theme.palette.xColor
-  }
+    color: theme.palette.xColor,
+  },
 }));
 ```
 
@@ -28,7 +28,7 @@ You can use styles in function or class components:
 
 ```js
 import React, { Component } from "react";
-import useStyles from "./styles";
+import { useStyles } from "./styles";
 
 // Functional component (hooks variant)
 const Root = () => {
@@ -54,20 +54,20 @@ export default withStyles(useStyles)(Root);
 
 ## Theming support 🔋
 
-You need wrap you'r root component with ThemeProvider and pass theme
+You need wrap you're root component with ThemeProvider and pass theme
 
 ```js
 import { ThemeProvider } from "react-native-stylex";
 
 const theme = {
   palette: {
-    textColor: "black"
+    textColor: "black",
   },
   utils: {
     fade(color, value) {
       /*...*/
-    }
-  }
+    },
+  },
 };
 
 const App = () => (
@@ -90,9 +90,9 @@ const useStyles = makeUseStyles(({ palette, utils }) => ({
   root: {
     color: palette.textColor,
     ...minWidth(320, {
-      color: utils.fade(palette.textColor, 0.7)
-    })
-  }
+      color: utils.fade(palette.textColor, 0.7),
+    }),
+  },
 }));
 
 const Root = () => {
