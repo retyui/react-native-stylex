@@ -5,31 +5,24 @@ jest.mock("../dimensions", () => ({
   getWindowDimensions: jest.fn(),
 }));
 
-const mockGetWindowDimensions = getWindowDimensions as jest.Mock;
+const mockWindowWidth = (width: number) => {
+  const mockGetWindowDimensions = getWindowDimensions as jest.Mock;
+  mockGetWindowDimensions.mockReturnValue({ width });
+};
 
 /*
  * To debug use analog on CSS: https://codepen.io/retyui/pen/dyOzKzV
  */
-
 describe("createBreakpointsMatcher", () => {
-  const breakpointsMaxWidth = createBreakpointsMatcher(
-    {
-      xxs: 100,
-      xs: 200,
-      s: 300,
-      m: 400,
-      l: 500,
-    },
-    maxWidth
-  );
-
-  const breakpointsMinWidth = createBreakpointsMatcher({
+  const config = {
     xxs: 100,
     xs: 200,
     s: 300,
     m: 400,
     l: 500,
-  });
+  };
+  const breakpointsMaxWidth = createBreakpointsMatcher(config, maxWidth);
+  const breakpointsMinWidth = createBreakpointsMatcher(config);
 
   const values = {
     xxs: "xxs: 100",
@@ -41,7 +34,7 @@ describe("createBreakpointsMatcher", () => {
   };
 
   it("should return boundary values", () => {
-    mockGetWindowDimensions.mockReturnValue({ width: 600 });
+    mockWindowWidth(600);
 
     expect({
       maxWidth: breakpointsMaxWidth(values),
@@ -51,7 +44,7 @@ describe("createBreakpointsMatcher", () => {
       minWidth: "l: 500",
     });
 
-    mockGetWindowDimensions.mockReturnValue({ width: 50 });
+    mockWindowWidth(50);
 
     expect({
       maxWidth: breakpointsMaxWidth(values),
@@ -63,7 +56,7 @@ describe("createBreakpointsMatcher", () => {
   });
 
   it("should work properly", () => {
-    mockGetWindowDimensions.mockReturnValue({ width: 450 });
+    mockWindowWidth(450);
 
     expect({
       maxWidth: breakpointsMaxWidth(values),
@@ -73,7 +66,7 @@ describe("createBreakpointsMatcher", () => {
       minWidth: "m: 400",
     });
 
-    mockGetWindowDimensions.mockReturnValue({ width: 401 });
+    mockWindowWidth(401);
 
     expect({
       maxWidth: breakpointsMaxWidth(values),
@@ -83,7 +76,7 @@ describe("createBreakpointsMatcher", () => {
       minWidth: "m: 400",
     });
 
-    mockGetWindowDimensions.mockReturnValue({ width: 400 });
+    mockWindowWidth(400);
 
     expect({
       maxWidth: breakpointsMaxWidth(values),
@@ -93,7 +86,7 @@ describe("createBreakpointsMatcher", () => {
       minWidth: "m: 400",
     });
 
-    mockGetWindowDimensions.mockReturnValue({ width: 399 });
+    mockWindowWidth(399);
 
     expect({
       maxWidth: breakpointsMaxWidth(values),
@@ -106,7 +99,7 @@ describe("createBreakpointsMatcher", () => {
 
   it("should return null when no default and it pass boundary values", () => {
     const { default: _, ...valuesWithoutDefault } = values;
-    mockGetWindowDimensions.mockReturnValue({ width: 600 });
+    mockWindowWidth(600);
 
     expect({
       maxWidth: breakpointsMaxWidth(valuesWithoutDefault),
@@ -116,7 +109,7 @@ describe("createBreakpointsMatcher", () => {
       minWidth: "l: 500",
     });
 
-    mockGetWindowDimensions.mockReturnValue({ width: 50 });
+    mockWindowWidth(50);
 
     expect({
       maxWidth: breakpointsMaxWidth(valuesWithoutDefault),
@@ -128,80 +121,67 @@ describe("createBreakpointsMatcher", () => {
   });
 });
 
-describe("docs test", () => {
+describe("docs examples", () => {
+  const config = {
+    xxs: 320,
+    xs: 480,
+    s: 640,
+    m: 768,
+    l: 1024,
+    xl: 1200,
+    xxl: 1920,
+  };
   describe("maxWidth", () => {
-    const applyBreakpoints = createBreakpointsMatcher(
-      {
-        xxs: 320,
-        xs: 480,
-        s: 640,
-        m: 768,
-        l: 1024,
-        xl: 1200,
-        xxl: 1920,
-      },
-      maxWidth
-    );
+    const applyBreakpoints = createBreakpointsMatcher(config, maxWidth);
 
     it("should work properly", () => {
       const values = { xxs: 20, xs: 18, default: 16 };
 
-      mockGetWindowDimensions.mockReturnValue({ width: 0 });
+      mockWindowWidth(0);
       expect(applyBreakpoints(values)).toBe(20);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 320 });
+      mockWindowWidth(320);
       expect(applyBreakpoints(values)).toBe(20);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 321 });
+      mockWindowWidth(321);
       expect(applyBreakpoints(values)).toBe(18);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 480 });
+      mockWindowWidth(480);
       expect(applyBreakpoints(values)).toBe(18);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 481 });
+      mockWindowWidth(481);
       expect(applyBreakpoints(values)).toBe(16);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 999 });
+      mockWindowWidth(999);
       expect(applyBreakpoints(values)).toBe(16);
     });
   });
 
   describe("minWidth", () => {
-    const applyBreakpoints = createBreakpointsMatcher(
-      {
-        xxs: 320,
-        xs: 480,
-        s: 640,
-        m: 768,
-        l: 1024,
-        xl: 1200,
-        xxl: 1920,
-      },
-      minWidth
-    );
+    const applyBreakpoints = createBreakpointsMatcher(config, minWidth);
 
     it("should work properly", () => {
       const values = { xxs: 18, xs: 16, default: 20 };
 
-      mockGetWindowDimensions.mockReturnValue({ width: 0 });
+      mockWindowWidth(0);
       expect(applyBreakpoints(values)).toBe(20);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 319 });
+      mockWindowWidth(319);
       expect(applyBreakpoints(values)).toBe(20);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 320 });
+      mockWindowWidth(320);
       expect(applyBreakpoints(values)).toBe(18);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 479 });
+      mockWindowWidth(479);
       expect(applyBreakpoints(values)).toBe(18);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 480 });
+      mockWindowWidth(480);
       expect(applyBreakpoints(values)).toBe(16);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 481 });
+      mockWindowWidth(481);
       expect(applyBreakpoints(values)).toBe(16);
 
-      mockGetWindowDimensions.mockReturnValue({ width: 999 });
+      mockWindowWidth(999);
       expect(applyBreakpoints(values)).toBe(16);
     });
   });

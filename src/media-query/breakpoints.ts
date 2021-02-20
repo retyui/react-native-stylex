@@ -1,4 +1,4 @@
-import { minAspectRatio, minWidth, minHeight } from "./base";
+import { minAspectRatio, minWidth, minHeight, maxWidth } from "./base";
 
 interface BreakpointsMatcher<TBreakpoints> {
   <T>(values: { [mode in keyof TBreakpoints]?: T }): T | undefined;
@@ -63,4 +63,55 @@ unexpected keys: ${invalidKeys.join(", ")}
 
     return values[key] || null;
   };
+}
+
+function getNextByKey<TBreakpoints extends Record<string, number>>(
+  breakpoints: TBreakpoints,
+  key: keyof TBreakpoints
+) {
+  type Keys = keyof TBreakpoints;
+
+  const breakpointsKeys: Array<Keys> = Object.keys(breakpoints).sort(
+    (a: Keys, b: Keys) => breakpoints[a] - breakpoints[b]
+  );
+  const index = breakpointsKeys.indexOf(key);
+  const nextKey: Keys | undefined = breakpointsKeys[index + 1];
+
+  return nextKey;
+}
+
+export function createBreakpoints<TBreakpoints extends Record<string, number>>(
+  breakpoints: TBreakpoints
+) {
+  type Keys = keyof TBreakpoints;
+
+  function up<T>(key: Keys, value: T): T | null {
+    return minWidth<T>(breakpoints[key], value);
+  }
+
+  function down<T>(key: Keys, value: T): T | null {
+    return maxWidth<T>(breakpoints[key], value);
+  }
+
+  function only<T>(key: Keys, value: T): T | null {
+    const nextKey = getNextByKey<TBreakpoints>(breakpoints, key);
+
+    if (nextKey !== undefined) {
+      return minWidth(
+        breakpoints[key],
+        maxWidth(breakpoints[nextKey] - 0.05, value)
+      );
+    }
+
+    return minWidth(breakpoints[key], value);
+  }
+
+  function between<T>(start: Keys, end: Keys, value: T): T | null {
+    return minWidth(
+      breakpoints[start],
+      maxWidth(breakpoints[end] - 0.05, value)
+    );
+  }
+
+  return { up, down, only, between };
 }
