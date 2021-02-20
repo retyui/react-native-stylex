@@ -1,3 +1,38 @@
+# 4.1.0
+
+- Extend a [Media Query API](docs/media-query.md) with `createBreakpointsMatcher(...)` [#8](https://github.com/retyui/react-native-stylex/issues/8)
+
+```ts
+import {
+  createBreakpointsMatcher,
+  minWidth,
+  maxWidth,
+} from "react-native-stylex/media-query";
+
+const applyBreakpoints = createBreakpointsMatcher(
+  {
+    // Breakpoints config
+    xxs: 320,
+    xs: 480,
+    s: 640,
+    m: 768,
+    l: 1024,
+    xl: 1200,
+    xxl: 1920,
+  },
+  maxWidth // Optional matcher function (by default 'minWidth')
+);
+
+const useStyles = makeUseStyles(() => ({
+  root: {
+    // if window width 0..320    => fontSize: 20
+    // if window width 480..321  => fontSize: 18
+    // if window width 481..♾️    => fontSize: 16
+    fontSize: applyBreakpoints({ xxs: 20, xs: 18, default: 16 }),
+  },
+}));
+```
+
 # 4.0.0
 
 - Optimize memory usage [#9](https://github.com/retyui/react-native-stylex/issues/9)

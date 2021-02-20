@@ -24,7 +24,7 @@ Better styling for react-native
 - 🕳️ [Appearance (a.k.a Dark mode)](docs/appearance.md);
 - 📐 [Dimensions](docs/dimensions.md);
 - 📲 [Orientation](docs/orientation.md);
-- 💉 [Media Queries](docs/media-query.md) syntax.
+- 💉 [Media Queries](docs/media-query.md) support.
 
 ### Links
 
