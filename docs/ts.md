@@ -1,5 +1,13 @@
 # Typescript support ⛱️
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [DefaultTheme](#defaulttheme)
+- [`withStyles()` HoC](#withstyles-hoc)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### DefaultTheme
 
 TypeScript definitions for stylex can be extended by using [declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) since version `v4.1.4` of the definitions.

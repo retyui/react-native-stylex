@@ -3,7 +3,7 @@ const { name: displayName } = require("./package");
 
 module.exports = {
   displayName,
-  testEnvironment: "jsdom",
+  testEnvironment: "node",
   preset: "react-native",
   cacheDirectory: resolve(__dirname, "./node_modules/.jestcache"),
   moduleFileExtensions: ["ts", "tsx", "js"],

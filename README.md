@@ -24,7 +24,7 @@ Better styling for react-native
 - 🕳️ [Appearance (a.k.a Dark mode)](docs/appearance.md);
 - 📐 [Dimensions](docs/dimensions.md);
 - 📲 [Orientation](docs/orientation.md);
-- 💉 [Media Queries](docs/media-query.md) syntax.
+- 💉 [Media Queries](docs/media-query.md) support.
 
 ### Links
 
@@ -50,10 +50,28 @@ Stylex provides component, which makes the theme available to the rest of your a
 
 ```js
 import { ThemeProvider } from "react-native-stylex";
+import {
+  createBreakpointsMatcher,
+  createBreakpoints,
+  maxWidth,
+} from "react-native-stylex/media-query";
+
+const breakpoints = {
+  xs: 360,
+  sm: 600,
+  md: 960,
+  lg: 1280,
+  xl: 1920,
+};
+const { up, down, only, between } = createBreakpoints(breakpoints);
+const applyBreakpoints = createBreakpointsMatcher(breakpoints, maxWidth);
 
 const theme = {
   palette: { textColor: "black" },
-  utils: { fade: (color, value) => {} },
+  breakpoints: { up, down, only, between, apply: applyBreakpoints },
+  utils: {
+    fade: (color, value) => {},
+  },
 };
 
 const Root = () => (
@@ -75,12 +93,27 @@ Normally, you’ll use it in this way:
 import { makeUseStyles } from "react-native-stylex";
 import { maxWidth } from "react-native-stylex/media-query";
 
-export const useStyles = makeUseStyles(({ palette, utils }) => ({
+export const useStyles = makeUseStyles(({ palette, utils, breakpoints }) => ({
   root: {
     color: utils.fade(palette.textColor, 0.5),
     height: 100,
     // On screens that are 320 or less, set the height to 69
     ...maxWidth(320, { height: 69 }),
+  },
+
+  text: {
+    fontSize: 16, // default value
+    ...breakpoints.down("lg", { fontSize: 18 }), // if window width 0..1280
+    ...breakpoints.down("sm", { fontSize: 20 }), // if window width 0..600
+  },
+
+  // The same example that you see above but unsing a 'applyBreakpoints'
+  title: {
+    fontSize: breakpoints.apply({
+      sm: 20, //      if window width 0....600
+      lg: 18, //      if window width 601..1280
+      default: 16, // if window width 1281...
+    }),
   },
 }));
 ```

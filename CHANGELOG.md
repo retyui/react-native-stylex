@@ -1,3 +1,9 @@
+# 4.1.0
+
+- Extend a [Media Query API](docs/media-query.md)
+  - `createBreakpointsMatcher(...)` [#8](https://github.com/retyui/react-native-stylex/issues/8)
+  - `createBreakpoints(...)`
+
 # 4.0.0
 
 - Optimize memory usage [#9](https://github.com/retyui/react-native-stylex/issues/9)
