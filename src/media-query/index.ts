@@ -9,4 +9,4 @@ export {
   minHeight,
 } from "./base";
 
-export { createBreakpointsMatcher } from "./breakpoints";
+export { createBreakpointsMatcher, createBreakpoints } from "./breakpoints";
