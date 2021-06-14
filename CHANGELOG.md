@@ -1,3 +1,7 @@
+# 4.1.1
+
+- Fix invalid import [#12](https://github.com/retyui/react-native-stylex/issues/12)
+
 # 4.1.0
 
 - Extend a [Media Query API](docs/media-query.md)
