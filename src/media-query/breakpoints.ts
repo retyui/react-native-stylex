@@ -34,6 +34,7 @@ export function createBreakpointsMatcher<
 ): BreakpointsMatcher<TBreakpoints> {
   return function breakpointsMatcher(values: any) {
     /* istanbul ignore next */
+    // @ts-expect-error: was removed
     if (process.env.NODE_ENV !== "production") {
       const invalidKeys = Object.keys(values).filter((key) => {
         return key !== "default" && breakpoints[key] === undefined;
@@ -58,7 +59,10 @@ unexpected keys: ${invalidKeys.join(", ")}
 
     const key =
       orderedBreakpointNames.find((breakpointName) =>
-        matchFunction(breakpoints[breakpointName], values[breakpointName])
+        matchFunction(
+          breakpoints[breakpointName] as number,
+          values[breakpointName]
+        )
       ) || "default";
 
     return values[key] || null;
@@ -86,11 +90,11 @@ export function createBreakpoints<TBreakpoints extends Record<string, number>>(
   type Keys = keyof TBreakpoints;
 
   function up<T>(key: Keys, value: T): T | null {
-    return minWidth<T>(breakpoints[key], value);
+    return minWidth<T>(breakpoints[key] as number, value);
   }
 
   function down<T>(key: Keys, value: T): T | null {
-    return maxWidth<T>(breakpoints[key], value);
+    return maxWidth<T>(breakpoints[key] as number, value);
   }
 
   function only<T>(key: Keys, value: T): T | null {
@@ -98,17 +102,17 @@ export function createBreakpoints<TBreakpoints extends Record<string, number>>(
 
     if (nextKey !== undefined) {
       return minWidth(
-        breakpoints[key],
+        breakpoints[key] as number,
         maxWidth(breakpoints[nextKey] - 0.05, value)
       );
     }
 
-    return minWidth(breakpoints[key], value);
+    return minWidth(breakpoints[key] as number, value);
   }
 
   function between<T>(start: Keys, end: Keys, value: T): T | null {
     return minWidth(
-      breakpoints[start],
+      breakpoints[start] as number,
       maxWidth(breakpoints[end] - 0.05, value)
     );
   }
