@@ -44,7 +44,7 @@ You need to point Jest to transform this package. You can do so, by adding modul
 {
   "jest": {
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native-stylex|react-native-other-module)/)"
+      'node_modules/(?!((jest-)?react-native|react-native-stylex|@react-native(-community)?)/)',
     ]
   }
 }
