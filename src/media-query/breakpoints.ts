@@ -76,7 +76,7 @@ function getNextByKey<TBreakpoints extends Record<string, number>>(
   type Keys = keyof TBreakpoints;
 
   const breakpointsKeys: Array<Keys> = Object.keys(breakpoints).sort(
-    (a: Keys, b: Keys) => breakpoints[a] - breakpoints[b]
+    (a: Keys, b: Keys) => breakpoints[a]!  - breakpoints[b]!
   );
   const index = breakpointsKeys.indexOf(key);
   const nextKey: Keys | undefined = breakpointsKeys[index + 1];
@@ -103,7 +103,7 @@ export function createBreakpoints<TBreakpoints extends Record<string, number>>(
     if (nextKey !== undefined) {
       return minWidth(
         breakpoints[key] as number,
-        maxWidth(breakpoints[nextKey] - 0.05, value)
+        maxWidth(breakpoints[nextKey]! - 0.05, value)
       );
     }
 
@@ -113,7 +113,7 @@ export function createBreakpoints<TBreakpoints extends Record<string, number>>(
   function between<T>(start: Keys, end: Keys, value: T): T | null {
     return minWidth(
       breakpoints[start] as number,
-      maxWidth(breakpoints[end] - 0.05, value)
+      maxWidth(breakpoints[end]! - 0.05, value)
     );
   }
 

@@ -3,7 +3,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["ESNext"],
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "declaration": true,
     "rootDir": "./src",
     "jsx": "react-native",

@@ -11,7 +11,7 @@ const defaultOptions = { duration: 250 };
 export function useColorTransition<Theme = DefaultTheme>(
   colorGetterFn: (theme: Theme) => string,
   options = defaultOptions
-): Animated.AnimatedInterpolation {
+): Animated.AnimatedInterpolation<string> {
   const theme = useTheme<Theme>();
   const currentColor = colorGetterFn(theme);
   const animatedValue = useRef(new Value(INITIAL_VALUE));
