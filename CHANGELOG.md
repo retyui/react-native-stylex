@@ -1,3 +1,12 @@
+# Change Log
+
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+# 4.2.0
+
+- Update save-area types and use `initialMetrics` by default 
+
+
 # 4.1.1
 
 - Fix invalid import [#12](https://github.com/retyui/react-native-stylex/issues/12)
