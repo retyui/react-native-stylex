@@ -1,12 +1,12 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        mavenLocal()
+        mavenCentral()
         google()
     }
 }
 
-rootProject.name='AppStyleX'
+rootProject.name = "AppStyleX"
 
-apply from: file("../node_modules/react-native-test-app/test-app.gradle")
+apply(from: "../node_modules/react-native-test-app/test-app.gradle")
 applyTestAppSettings(settings)
