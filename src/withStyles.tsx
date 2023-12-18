@@ -1,11 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
-  ComponentClass,
   ComponentProps,
   ComponentType,
-  ExoticComponent,
   forwardRef,
   Ref,
-  RefAttributes,
+  ElementRef
 } from "react";
 
 interface InjectedStyledProps<Styles> {
@@ -16,29 +15,20 @@ export type InferInjectedStyledProps<
   Fn extends (...args: any) => any
 > = InjectedStyledProps<ReturnType<Fn>>;
 
-type InferRefType<T> = T extends ExoticComponent<infer Props>
-  ? Props extends RefAttributes<infer RefType>
-    ? RefType
-    : never
-  : T extends ComponentClass<any>
-  ? InstanceType<T>
-  : never;
-
 export function withStyles<Styles>(useStyles: () => Styles) {
   function WithStyles<TComponent extends ComponentType<any>>(
     Component: TComponent
   ) {
-    const WithStyles = (
+    const renderComponent = (
       props: Omit<ComponentProps<TComponent>, "styles">,
-      ref: Ref<InferRefType<TComponent>>
+      ref: Ref<ElementRef<TComponent>>
     ) => {
       const styles = useStyles();
-
       // @ts-expect-error: 'ref' as never
       return <Component {...props} ref={ref} styles={styles} />;
     };
 
-    return forwardRef(WithStyles);
+    return forwardRef(renderComponent);
   }
 
   return WithStyles;
