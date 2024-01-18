@@ -152,3 +152,18 @@ export default withStyles(useStyles)(Root);
 ### 5️⃣ Do you use a Typescript ?
 
 - Look at [typescript](docs/ts.md) guide
+
+### Alternative solutions
+
+- [@emotion/native
+](https://emotion.sh/docs/@emotion/native) [![react-native-stylex downloads](https://badgen.net/npm/dm/@emotion/native)](https://www.npmtrends.com/@emotion/native)
+- [nativewind](https://nativewind.dev/) [![react-native-stylex downloads](https://badgen.net/npm/dm/nativewind)](https://www.npmtrends.com/nativewind)
+- [@shopify/restyle](https://shopify.github.io/restyle/) [![react-native-stylex downloads](https://badgen.net/npm/dm/@shopify/restyle)](https://www.npmtrends.com/@shopify/restyle)
+- [tamagui](https://tamagui.dev/) [![react-native-stylex downloads](https://badgen.net/npm/dm/tamagui)](https://www.npmtrends.com/tamagui)
+- [twrnc](https://github.com/jaredh159/tailwind-react-native-classnames) [![react-native-stylex downloads](https://badgen.net/npm/dm/twrnc)](https://www.npmtrends.com/twrnc)
+- [tailwind-rn](https://github.com/vadimdemedes/tailwind-rn) [![react-native-stylex downloads](https://badgen.net/npm/dm/tailwind-rn)](https://www.npmtrends.com/tailwind-rn)
+- [dripsy](https://www.dripsy.xyz/) [![react-native-stylex downloads](https://badgen.net/npm/dm/dripsy)](https://www.npmtrends.com/dripsy)
+- [react-native-unistyles](https://reactnativeunistyles.vercel.app/) [![react-native-stylex downloads](https://badgen.net/npm/dm/react-native-unistyles)](https://www.npmtrends.com/react-native-unistyles)
+- [react-native-zephyr](https://formidable.com/open-source/react-native-zephyr/) [![react-native-stylex downloads](https://badgen.net/npm/dm/react-native-zephyr)](https://www.npmtrends.com/react-native-zephyr)
+- [@fast-styles/react](https://fedemartinm.github.io/fast-styles/) [![react-native-stylex downloads](https://badgen.net/npm/dm/@fast-styles/react)](https://www.npmtrends.com/@fast-styles/react)
+
