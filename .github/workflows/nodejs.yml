@@ -1,4 +1,4 @@
-name: Main
+name: Code Quality
 
 on:
   pull_request:
@@ -21,11 +21,11 @@ jobs:
         node-version: [20.x]
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         cache: 'yarn'
         node-version: ${{ matrix.node-version }}
