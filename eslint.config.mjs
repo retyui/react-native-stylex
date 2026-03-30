@@ -9,6 +9,7 @@ import ts from "typescript-eslint";
 import R from "react/package.json" with { type: "json" };
 import jest from "eslint-plugin-jest";
 import reactNative from "@react-native/eslint-config";
+import testingLibrary from "eslint-plugin-testing-library";
 
 export default defineConfig(
   {
@@ -43,7 +44,11 @@ export default defineConfig(
   {
     ...jest.configs["flat/recommended"],
     ...jest.configs["flat/style"],
-    files: ["**/testing/*", "**/*.test.{ts,tsx,js,jsx}"],
+    files: ["**/*.test.{ts,tsx,js,jsx}"],
+  },
+  {
+    ...testingLibrary.configs["flat/react"],
+    files: ["**/*.test.{ts,tsx,js,jsx}"],
   },
   prettier, // Have to be in the end
   {

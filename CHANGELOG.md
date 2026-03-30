@@ -2,6 +2,17 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# 5.0.0
+
+🚨 **BREAKING CHANGES:**
+- Remove support for deprecated `react-native-dark-mode`
+- React 19 support (types and compiler)
+
+Changes:
+- Eslint flat config
+- Update dev dependencies
+
+
 # 4.2.0
 
 - Update save-area types and use `initialMetrics` by default 
@@ -66,7 +77,7 @@ Improve memoization logic
 Add integrations with third party modules\APIs:
 
 - [react-native-safe-area](docs/safe-area.md)
-- [react-native-dark-mode](docs/dark-mode.md)
+- [react-native-dark-mode](https://github.com/retyui/react-native-stylex/blob/478f547eac70739522f041ab6800819f800fded1/docs/dark-mode.md)
 - [Media Query](docs/media-query.md)
 - [Orientation](docs/orientation.md)
 - [i18n](docs/i18n.md)

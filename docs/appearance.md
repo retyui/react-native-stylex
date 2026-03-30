@@ -2,8 +2,6 @@
 
 To start using integration with [react-native Appearance](https://reactnative.dev/docs/appearance) module, you need to use react-native [0.62.x](https://reactnative.dev/blog/2020/03/26/version-0.62#new-dark-mode-features).
 
-> ⚠️ If you need to support React Native below `0.62.x`, please see [react-native-dark-mode](docs/dark-mode.md)
-
 After that you can use special API:
 
 - `appearance({ dark, light, default })`

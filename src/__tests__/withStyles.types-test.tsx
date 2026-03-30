@@ -1,4 +1,4 @@
-import React, { FC, JSX, forwardRef } from "react";
+import React, { JSX, FC, forwardRef } from "react";
 import { TextInput } from "react-native";
 
 import { makeUseStyles } from "../makeUseStyles";

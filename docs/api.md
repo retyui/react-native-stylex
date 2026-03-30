@@ -6,7 +6,6 @@ Also read:
 - [Orientation](orientation.md)
 - [I18n](i18n.md)
 - [react-native-safe-area-view](safe-area.md)
-- [react-native-dark-mode](dark-mode.md);
 - [Typescript](ts.md);
 - [Testing with Jest](testting.md).
 

@@ -1,4 +1,4 @@
-import { act, renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react-native";
 
 import { createEventEmitter } from "../createEventEmitter";
 import { addDependency } from "../dependencyRegistry";
