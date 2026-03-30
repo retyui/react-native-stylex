@@ -155,12 +155,10 @@ export default withStyles(useStyles)(Root);
 
 ### Alternative solutions
 
-- [uniwind](https://uniwind.dev/) [react-native-stylex downloads](https://badgen.net/npm/dm/uniwind)
-- [react-native-unistyles](https://reactnativeunistyles.vercel.app/) [react-native-stylex downloads](https://badgen.net/npm/dm/react-native-unistyles)
-- [nativewind](https://nativewind.dev/) [react-native-stylex downloads](https://badgen.net/npm/dm/nativewind)
-- [@emotion/native](https://emotion.sh/docs/@emotion/native) [react-native-stylex downloads](https://badgen.net/npm/dm/@emotion/native)
-- [@shopify/restyle](https://shopify.github.io/restyle/) [react-native-stylex downloads](https://badgen.net/npm/dm/@shopify/restyle)
-- [tamagui](https://tamagui.dev/) [react-native-stylex downloads](https://badgen.net/npm/dm/tamagui)
-- [dripsy](https://www.dripsy.xyz/) [react-native-stylex downloads](https://badgen.net/npm/dm/dripsy)
-- [react-native-zephyr](https://formidable.com/open-source/react-native-zephyr/) [react-native-stylex downloads](https://badgen.net/npm/dm/react-native-zephyr)
-- [@fast-styles/react](https://fedemartinm.github.io/fast-styles/) [react-native-stylex downloads](https://badgen.net/npm/dm/@fast-styles/react)
+- [uniwind](https://uniwind.dev/) ![](https://badgen.net/npm/dm/uniwind)
+- [react-native-unistyles](https://reactnativeunistyles.vercel.app/) ![](https://badgen.net/npm/dm/react-native-unistyles)
+- [nativewind](https://nativewind.dev/) ![](https://badgen.net/npm/dm/nativewind)
+- [@emotion/native](https://emotion.sh/docs/@emotion/native) ![](https://badgen.net/npm/dm/@emotion/native)
+- [@shopify/restyle](https://shopify.github.io/restyle/) ![](https://badgen.net/npm/dm/@shopify/restyle)
+- [tamagui](https://tamagui.dev/) ![](https://badgen.net/npm/dm/tamagui)
+- [dripsy](https://www.dripsy.xyz/) ![](https://badgen.net/npm/dm/dripsy)
