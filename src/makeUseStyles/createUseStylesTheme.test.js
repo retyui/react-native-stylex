@@ -80,7 +80,6 @@ it("should use memoized styles when component rerender", () => {
   const result = createRef();
   const useStyles = createUseStylesTheme(mockGetStyles);
   const MyComp = (props) => {
-    // eslint-disable-next-line react-hooks/immutability
     result.current = useStyles();
     return props.a;
   };

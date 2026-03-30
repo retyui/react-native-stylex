@@ -6,11 +6,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 🚨 **BREAKING CHANGES:**
 - Remove support for deprecated `react-native-dark-mode`
-- React 19 support (types and compiler)
+- React 19 **required**
+- `forceRerender` emit re-renders properly (prev. re-renders might be skipped in case `true -> false -> true`)
 
 Changes:
 - Eslint flat config
 - Update dev dependencies
+- Added React Compiler annotations
+- Reduce npm pkg. size by removing `makeUseStyles/test-type.js `
+- Update `prettier`
 
 
 # 4.2.0

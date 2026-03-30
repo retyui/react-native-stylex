@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 import { useEffect, useRef, useState } from "react";
 
 import { getDependency } from "../dependencyRegistry";
@@ -15,11 +16,9 @@ export const useForceUpdate = (scope) => {
   if (unsubscribeRef.current === noop) {
     const forceRerender = () => setState((val) => val + 1);
 
-    // eslint-disable-next-line react-hooks/immutability
     scope.forceUpdate = scope.forceUpdate.concat(forceRerender);
 
     unsubscribeRef.current = () => {
-      // eslint-disable-next-line react-hooks/immutability
       scope.forceUpdate = scope.forceUpdate.filter(
         (fn) => fn !== forceRerender,
       );

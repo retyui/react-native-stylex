@@ -50,6 +50,12 @@ export default defineConfig(
     ...testingLibrary.configs["flat/react"],
     files: ["**/*.test.{ts,tsx,js,jsx}"],
   },
+  {
+    rules: {
+      "react-hooks/immutability": "off",
+    },
+    files: ["**/*.test.{ts,tsx,js,jsx}"],
+  },
   prettier, // Have to be in the end
   {
     plugins: {

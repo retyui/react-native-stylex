@@ -1,6 +1,6 @@
 {
   "name": "react-native-stylex",
-  "version": "5.0.0-rc.0",
+  "version": "5.0.0-rc.1",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": "git@github.com:retyui/react-native-stylex.git",
@@ -10,7 +10,7 @@
     "before-build": "rm -rf lib",
     "build": "yarn before-build && tsc && yarn after-build",
     "after-build": "mkdir lib/makeUseStyles && cp src/makeUseStyles/* lib/makeUseStyles && rm -rf lib/**/*test.* && prettier --write lib/**/*.{js,ts}",
-    "clean-publish": "yarn test && yarn build && node ./node_modules/clean-publish/clear-package-json.js package.json > lib/package.json && cp CHANGELOG.md LICENSE README.md lib",
+    "clean-publish": "yarn test && yarn build && rm -rf lib/makeUseStyles/test-type.js  && node ./node_modules/clean-publish/clear-package-json.js package.json > lib/package.json && cp CHANGELOG.md LICENSE README.md lib",
     "publish-next": "yarn clean-publish && cd lib && npm publish --tag next",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "test": "jest --coverage",
