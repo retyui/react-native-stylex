@@ -4,7 +4,7 @@ it("should call handler when invoke emit", () => {
   const a = createEventEmitter("event");
   const handler = jest.fn();
 
-  const unsub = a.on(handler);
+  const _unsub = a.on(handler);
 
   expect(handler).toHaveBeenCalledTimes(0);
 

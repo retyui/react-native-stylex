@@ -3,7 +3,7 @@ import { getScreenDimensions } from "./dimensions";
 type OrientationType = "portrait" | "landscape";
 
 export function orientation<T>(
-  spec: { [orientation in OrientationType]?: T }
+  spec: Partial<Record<OrientationType, T>>,
 ): T | undefined {
   const { height, width } = getScreenDimensions();
 

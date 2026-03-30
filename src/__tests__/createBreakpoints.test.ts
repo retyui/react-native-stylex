@@ -1,5 +1,5 @@
-import { createBreakpoints } from "../media-query/breakpoints";
 import { getWindowDimensions } from "../dimensions";
+import { createBreakpoints } from "../media-query/breakpoints";
 
 jest.mock("../dimensions", () => ({
   getWindowDimensions: jest.fn(),

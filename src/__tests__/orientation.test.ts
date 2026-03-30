@@ -1,6 +1,6 @@
-import { landscapeOrientation, portraitOrientation } from "../orientation";
-
 import { Dimensions } from "react-native";
+
+import { landscapeOrientation, portraitOrientation } from "../orientation";
 
 const mockStyle = { color: "black" };
 

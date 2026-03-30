@@ -1,7 +1,7 @@
 import { Appearance } from "react-native";
 
-import { addDependency } from "../dependencyRegistry";
 import { createEventEmitter } from "../createEventEmitter";
+import { addDependency } from "../dependencyRegistry";
 
 import { UI_MODE_DEPENDENCY_KEY } from "./consts";
 

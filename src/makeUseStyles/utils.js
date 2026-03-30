@@ -1,24 +1,27 @@
-import { optimizeDependencies } from "../dimensions/utils";
-import { getUsing } from "../dependencyUsage";
-import { getDependency } from "../dependencyRegistry";
-
 import { useEffect, useRef, useState } from "react";
+
+import { getDependency } from "../dependencyRegistry";
+import { getUsing } from "../dependencyUsage";
+import { optimizeDependencies } from "../dimensions/utils";
 
 /* istanbul ignore next */
 const noop = () => {};
 
 export const useForceUpdate = (scope) => {
+  "use no memo";
   const unsubscribeRef = useRef(noop);
-  const setState = useState(false)[1];
+  const setState = useState(0)[1];
 
   if (unsubscribeRef.current === noop) {
-    const forceRerender = () => setState((flag) => !flag);
+    const forceRerender = () => setState((val) => val + 1);
 
+    // eslint-disable-next-line react-hooks/immutability
     scope.forceUpdate = scope.forceUpdate.concat(forceRerender);
 
     unsubscribeRef.current = () => {
+      // eslint-disable-next-line react-hooks/immutability
       scope.forceUpdate = scope.forceUpdate.filter(
-        (fn) => fn !== forceRerender
+        (fn) => fn !== forceRerender,
       );
     };
   }
@@ -28,7 +31,7 @@ export const useForceUpdate = (scope) => {
       unsubscribeRef.current();
       unsubscribeRef.current = noop;
     },
-    []
+    [],
   );
 };
 
@@ -51,13 +54,13 @@ export const subscribe = (dependenciesKeys, handler) => {
 
             if (!onChange) {
               console.warn(
-                `[react-native-stylex] Could not find onChange handler for ${dependencyName}!`
+                `[react-native-stylex] Could not find onChange handler for ${dependencyName}!`,
               );
             }
 
             return !!onChange;
           }
-        : Boolean
+        : Boolean,
     )
     .map((onChange) => onChange(handler));
 

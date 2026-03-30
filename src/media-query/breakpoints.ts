@@ -1,4 +1,4 @@
-import { minAspectRatio, minWidth, minHeight, maxWidth } from "./base";
+import { maxWidth, minAspectRatio, minHeight, minWidth } from "./base";
 
 interface BreakpointsMatcher<TBreakpoints> {
   <T>(values: { [mode in keyof TBreakpoints]?: T }): T | undefined;
@@ -10,8 +10,8 @@ const orderByMin = [minWidth, minAspectRatio, minHeight];
 const toOrderedBreakpointNames = <TBreakpoints extends Record<string, number>>(
   values: any,
   breakpoints: any,
-  matchFunction: any
-): Array<keyof TBreakpoints> => {
+  matchFunction: any,
+): (keyof TBreakpoints)[] => {
   const result = Object.keys(values)
     .filter((e) => e !== "default")
     .sort((a, b) => breakpoints[a] - breakpoints[b]);
@@ -27,10 +27,10 @@ const toOrderedBreakpointNames = <TBreakpoints extends Record<string, number>>(
  * To debug use analog on CSS: https://codepen.io/retyui/pen/dyOzKzV
  */
 export function createBreakpointsMatcher<
-  TBreakpoints extends Record<string, number>
+  TBreakpoints extends Record<string, number>,
 >(
   breakpoints: TBreakpoints,
-  matchFunction = minWidth
+  matchFunction = minWidth,
 ): BreakpointsMatcher<TBreakpoints> {
   return function breakpointsMatcher(values: any) {
     /* istanbul ignore next */
@@ -46,7 +46,7 @@ export function createBreakpointsMatcher<
 
 allowed keys: ${Object.keys(breakpoints).join(", ")}
 unexpected keys: ${invalidKeys.join(", ")}
-`
+`,
         );
       }
     }
@@ -54,15 +54,15 @@ unexpected keys: ${invalidKeys.join(", ")}
     const orderedBreakpointNames = toOrderedBreakpointNames<TBreakpoints>(
       values,
       breakpoints,
-      matchFunction
+      matchFunction,
     );
 
     const key =
       orderedBreakpointNames.find((breakpointName) =>
         matchFunction(
           breakpoints[breakpointName] as number,
-          values[breakpointName]
-        )
+          values[breakpointName],
+        ),
       ) || "default";
 
     return values[key] || null;
@@ -71,12 +71,12 @@ unexpected keys: ${invalidKeys.join(", ")}
 
 function getNextByKey<TBreakpoints extends Record<string, number>>(
   breakpoints: TBreakpoints,
-  key: keyof TBreakpoints
+  key: keyof TBreakpoints,
 ) {
   type Keys = keyof TBreakpoints;
 
-  const breakpointsKeys: Array<Keys> = Object.keys(breakpoints).sort(
-    (a: Keys, b: Keys) => breakpoints[a]!  - breakpoints[b]!
+  const breakpointsKeys: Keys[] = Object.keys(breakpoints).sort(
+    (a: Keys, b: Keys) => breakpoints[a]! - breakpoints[b]!,
   );
   const index = breakpointsKeys.indexOf(key);
   const nextKey: Keys | undefined = breakpointsKeys[index + 1];
@@ -85,7 +85,7 @@ function getNextByKey<TBreakpoints extends Record<string, number>>(
 }
 
 export function createBreakpoints<TBreakpoints extends Record<string, number>>(
-  breakpoints: TBreakpoints
+  breakpoints: TBreakpoints,
 ) {
   type Keys = keyof TBreakpoints;
 
@@ -103,7 +103,7 @@ export function createBreakpoints<TBreakpoints extends Record<string, number>>(
     if (nextKey !== undefined) {
       return minWidth(
         breakpoints[key] as number,
-        maxWidth(breakpoints[nextKey]! - 0.05, value)
+        maxWidth(breakpoints[nextKey]! - 0.05, value),
       );
     }
 
@@ -113,7 +113,7 @@ export function createBreakpoints<TBreakpoints extends Record<string, number>>(
   function between<T>(start: Keys, end: Keys, value: T): T | null {
     return minWidth(
       breakpoints[start] as number,
-      maxWidth(breakpoints[end]! - 0.05, value)
+      maxWidth(breakpoints[end]! - 0.05, value),
     );
   }
 

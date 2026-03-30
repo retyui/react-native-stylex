@@ -1,6 +1,6 @@
-import "./init";
-
 import { Appearance } from "react-native";
+
+import "./init";
 
 import { onUse } from "../dependencyUsage";
 

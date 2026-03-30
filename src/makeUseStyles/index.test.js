@@ -1,5 +1,5 @@
-import { createUseStylesWithoutTheme } from "./createUseStylesWithoutTheme";
 import { createUseStylesTheme } from "./createUseStylesTheme";
+import { createUseStylesWithoutTheme } from "./createUseStylesWithoutTheme";
 import { makeUseStyles } from "./index";
 
 jest.mock("./createUseStylesWithoutTheme");
@@ -19,7 +19,7 @@ it("should invoke 'createUseStylesWithoutTheme' when pass function without first
 });
 
 it("should invoke 'createUseStylesTheme' when pass function with first argument", () => {
-  const withThemeDeps = (theme) => ({});
+  const withThemeDeps = (_theme) => ({});
 
   makeUseStyles(withThemeDeps);
 

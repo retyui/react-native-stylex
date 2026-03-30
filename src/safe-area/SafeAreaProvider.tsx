@@ -1,17 +1,22 @@
-import React from "react";
-import { SafeAreaProvider as CoreSafeAreaProvider, initialWindowMetrics,initialWindowSafeAreaInsets  } from "react-native-safe-area-context";
+import type { FC } from "react";
+import {
+  initialWindowMetrics,
+  SafeAreaProvider as CoreSafeAreaProvider,
+} from "react-native-safe-area-context";
 
 import { StylexSaveAreaConsumer } from "./StylexSaveAreaConsumer";
-import { SafeAreaViewProps } from "./types";
+import type { SafeAreaViewProps } from "./types";
 
-export function SafeAreaProvider(props: SafeAreaViewProps): JSX.Element | null {
+export const SafeAreaProvider: FC<SafeAreaViewProps> = (props) => {
   return (
     <CoreSafeAreaProvider
-        initialSafeAreaInsets={props.initialSafeAreaInsets || initialWindowSafeAreaInsets}
-        initialMetrics={props.initialMetrics || initialWindowMetrics}
-        {...props}>
+      initialMetrics={props.initialMetrics || initialWindowMetrics}
+      {...props}
+    >
       {props.children}
       <StylexSaveAreaConsumer />
     </CoreSafeAreaProvider>
   );
-}
+};
+
+SafeAreaProvider.displayName = "StylexSafeAreaProvider";

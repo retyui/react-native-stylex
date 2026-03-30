@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
+
 import { resetUsing } from "../dependencyUsage";
+
 import { getDependenciesKeys, subscribe, useForceUpdate } from "./utils";
 
 export function createUseStylesWithoutTheme(getStyles) {
@@ -29,8 +31,8 @@ export function createUseStylesWithoutTheme(getStyles) {
   initStyle();
 
   function useStyles() {
+    "use memo";
     useForceUpdate(scope);
-
     return scope.style;
   }
 

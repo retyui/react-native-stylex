@@ -2,6 +2,7 @@ import { Dimensions, ScaledSize } from "react-native";
 
 import { createEventEmitter } from "../createEventEmitter";
 import { addDependency } from "../dependencyRegistry";
+
 import { SCREEN_DEPENDENCY_KEY, WINDOW_DEPENDENCY_KEY } from "./consts";
 
 const { get, addEventListener } = Dimensions;
@@ -15,11 +16,11 @@ const isNotEqual = (a: ScaledSize, b: ScaledSize) =>
   a.width !== b.width || a.height !== b.height;
 
 addDependency(WINDOW_DEPENDENCY_KEY, (handler: () => void) =>
-  windowEventEmitter.on(handler)
+  windowEventEmitter.on(handler),
 );
 
 addDependency(SCREEN_DEPENDENCY_KEY, (handler: () => void) =>
-  screenEventEmitter.on(handler)
+  screenEventEmitter.on(handler),
 );
 
 addEventListener("change", ({ window, screen }) => {

@@ -1,4 +1,4 @@
-import { onUse, resetUsing, getUsing } from "../dependencyUsage";
+import { getUsing, onUse, resetUsing } from "../dependencyUsage";
 
 it("should clear usage map", () => {
   onUse("a");

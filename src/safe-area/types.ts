@@ -1,4 +1,4 @@
-import {SafeAreaProviderProps} from "react-native-safe-area-context";
+import { SafeAreaProviderProps } from "react-native-safe-area-context";
 
 export interface EdgeInsets {
   top: number;
@@ -7,4 +7,6 @@ export interface EdgeInsets {
   left: number;
 }
 
-export interface SafeAreaViewProps extends SafeAreaProviderProps { }
+export interface SafeAreaViewProps extends SafeAreaProviderProps {
+  //
+}

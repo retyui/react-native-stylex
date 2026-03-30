@@ -1,7 +1,8 @@
-import React, { FC, forwardRef } from "react";
+import React, { FC, JSX, forwardRef } from "react";
 import { TextInput } from "react-native";
-import { InferInjectedStyledProps, withStyles } from "../withStyles";
+
 import { makeUseStyles } from "../makeUseStyles";
+import { InferInjectedStyledProps, withStyles } from "../withStyles";
 
 {
   const useStyles = makeUseStyles(() => ({
@@ -59,17 +60,16 @@ import { makeUseStyles } from "../makeUseStyles";
     a: boolean;
   }
 
-  const WithRef = forwardRef<TextInput, Props>(function Component(
-    props,
-    ref
-  ): JSX.Element | null {
-    props.styles.root.color = "";
+  const WithRef = forwardRef<TextInput, Props>(
+    function Component(props, ref): JSX.Element | null {
+      props.styles.root.color = "";
 
-    // @ts-expect-error 'a' not exists
-    props.styles.a = {};
+      // @ts-expect-error 'a' not exists
+      props.styles.a = {};
 
-    return <TextInput ref={ref} />;
-  });
+      return <TextInput ref={ref} />;
+    },
+  );
 
   const ComponentWithStylesAndRef = withStyles(useStyles)(WithRef);
 

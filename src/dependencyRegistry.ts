@@ -1,9 +1,7 @@
 type UnSubscribeFn = () => void;
 type SubscribeFn = (handler: () => void) => UnSubscribeFn;
 
-interface Registry {
-  [dependencyName: string]: SubscribeFn;
-}
+type Registry = Record<string, SubscribeFn>;
 
 const registry: Registry = {};
 

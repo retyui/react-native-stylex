@@ -1,12 +1,13 @@
 import { Dimensions } from "react-native";
+
 import {
+  aspectRatio,
+  maxAspectRatio,
   maxHeight,
   maxWidth,
+  minAspectRatio,
   minHeight,
   minWidth,
-  aspectRatio,
-  minAspectRatio,
-  maxAspectRatio,
 } from "../media-query";
 
 const mockStyle = { color: "black" };
@@ -30,7 +31,7 @@ describe("max*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(maxHeight(320, mockStyle)).toEqual(null);
+      expect(maxHeight(320, mockStyle)).toBeNull();
     });
 
     it("should return null when device height equal a passed value", () => {
@@ -38,7 +39,7 @@ describe("max*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(maxHeight(320, mockStyle)).toEqual(null);
+      expect(maxHeight(320, mockStyle)).toBeNull();
     });
   });
 
@@ -56,7 +57,7 @@ describe("max*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(maxWidth(320, mockStyle)).toEqual(null);
+      expect(maxWidth(320, mockStyle)).toBeNull();
     });
 
     it("should return null when device width equal a passed value", () => {
@@ -64,7 +65,7 @@ describe("max*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(maxWidth(320, mockStyle)).toEqual(null);
+      expect(maxWidth(320, mockStyle)).toBeNull();
     });
   });
 });
@@ -76,7 +77,7 @@ describe("min*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(minHeight(320, mockStyle)).toEqual(null);
+      expect(minHeight(320, mockStyle)).toBeNull();
     });
 
     it("should return style when device height more than passed value", () => {
@@ -92,7 +93,7 @@ describe("min*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(minHeight(320, mockStyle)).toEqual(null);
+      expect(minHeight(320, mockStyle)).toBeNull();
     });
   });
 
@@ -102,7 +103,7 @@ describe("min*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(minWidth(320, mockStyle)).toEqual(null);
+      expect(minWidth(320, mockStyle)).toBeNull();
     });
 
     it("should return style when device width more than passed value", () => {
@@ -118,7 +119,7 @@ describe("min*", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(minWidth(320, mockStyle)).toEqual(null);
+      expect(minWidth(320, mockStyle)).toBeNull();
     });
   });
 });
@@ -130,7 +131,7 @@ describe("aspectRatio", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(aspectRatio(1 / 2, mockStyle)).toEqual(null);
+      expect(aspectRatio(1 / 2, mockStyle)).toBeNull();
     });
 
     it("should return style when ratio equal", () => {
@@ -146,7 +147,7 @@ describe("aspectRatio", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(aspectRatio(1 / 2, mockStyle)).toEqual(null);
+      expect(aspectRatio(1 / 2, mockStyle)).toBeNull();
     });
   });
 
@@ -156,7 +157,7 @@ describe("aspectRatio", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(minAspectRatio(1 / 2, mockStyle)).toEqual(null);
+      expect(minAspectRatio(1 / 2, mockStyle)).toBeNull();
     });
 
     it("should return style when ratio equal passed", () => {
@@ -198,7 +199,7 @@ describe("aspectRatio", () => {
 
       mockGetDimensions(dimensions);
 
-      expect(maxAspectRatio(1 / 2, mockStyle)).toEqual(null);
+      expect(maxAspectRatio(1 / 2, mockStyle)).toBeNull();
     });
   });
 });

@@ -1,9 +1,10 @@
-import "./init";
-
 import { Dimensions, ScaledSize } from "react-native";
 
+import "./init";
+
 import { onUse } from "../dependencyUsage";
-import { WINDOW_DEPENDENCY_KEY, SCREEN_DEPENDENCY_KEY } from "./consts";
+
+import { SCREEN_DEPENDENCY_KEY, WINDOW_DEPENDENCY_KEY } from "./consts";
 
 const get = (dim: "window" | "screen") => Dimensions.get(dim);
 

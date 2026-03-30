@@ -1,9 +1,7 @@
 type Handler = () => void;
 type UnSubscribe = () => void;
 
-interface EventsRegistry {
-  [eventName: string]: Array<Handler>;
-}
+type EventsRegistry = Record<string, Handler[]>;
 
 interface Result {
   on: (callback: Handler) => UnSubscribe;

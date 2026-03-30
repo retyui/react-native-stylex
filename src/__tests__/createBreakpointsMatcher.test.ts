@@ -1,5 +1,5 @@
-import { createBreakpointsMatcher, maxWidth, minWidth } from "../media-query";
 import { getWindowDimensions } from "../dimensions";
+import { createBreakpointsMatcher, maxWidth, minWidth } from "../media-query";
 
 jest.mock("../dimensions", () => ({
   getWindowDimensions: jest.fn(),

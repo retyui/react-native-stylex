@@ -3,8 +3,8 @@ import "./init";
 import { onUse } from "../dependencyUsage";
 
 import { SAFE_AREA_DEPENDENCY_KEY } from "./consts";
-import { EdgeInsets } from "./types";
 import { state } from "./state";
+import { EdgeInsets } from "./types";
 
 export { StylexSaveAreaConsumer } from "./StylexSaveAreaConsumer";
 export { SafeAreaProvider } from "./SafeAreaProvider";

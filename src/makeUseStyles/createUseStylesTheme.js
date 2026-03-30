@@ -1,7 +1,9 @@
 import { StyleSheet } from "react-native";
-import { useTheme } from "../useTheme";
+
 import { resetUsing } from "../dependencyUsage";
-import { getDependenciesKeys, useForceUpdate, subscribe } from "./utils";
+import { useTheme } from "../useTheme";
+
+import { getDependenciesKeys, subscribe, useForceUpdate } from "./utils";
 
 export function createUseStylesTheme(getStyles) {
   const scope = {
@@ -29,6 +31,7 @@ export function createUseStylesTheme(getStyles) {
   }
 
   return function useStyles() {
+    "use memo";
     const theme = useTheme();
 
     useForceUpdate(scope);

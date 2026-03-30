@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/refs */
 import { useEffect, useMemo, useRef } from "react";
 import { Animated } from "react-native";
+
 import { DefaultTheme } from "./DefaultTheme";
 import { useTheme } from "./useTheme";
 
@@ -10,8 +12,9 @@ const defaultOptions = { duration: 250 };
 
 export function useColorTransition<Theme = DefaultTheme>(
   colorGetterFn: (theme: Theme) => string,
-  options = defaultOptions
+  options = defaultOptions,
 ): Animated.AnimatedInterpolation<string> {
+  "use no memo";
   const theme = useTheme<Theme>();
   const currentColor = colorGetterFn(theme);
   const animatedValue = useRef(new Value(INITIAL_VALUE));
@@ -44,6 +47,7 @@ export function useColorTransition<Theme = DefaultTheme>(
 
     return animatedValue.current.interpolate({
       inputRange: [0, 1],
+
       outputRange,
     });
   }, [prev, current]);

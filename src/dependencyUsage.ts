@@ -1,6 +1,4 @@
-interface UsingSpec {
-  [dependencyName: string]: boolean;
-}
+type UsingSpec = Record<string, boolean>;
 
 interface Ref {
   current: UsingSpec;

@@ -5,7 +5,7 @@ type LayoutDirectionType = "rtl" | "ltr";
 export function i18n<T>({
   rtl,
   ltr,
-}: { [direction in LayoutDirectionType]?: T }): T | undefined {
+}: Partial<Record<LayoutDirectionType, T>>): T | undefined {
   if (I18nManager.isRTL) {
     return rtl;
   }

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { makeUseStyles } from "./index";
 {
   const useStyles = makeUseStyles(() => ({
@@ -7,9 +8,9 @@ import { makeUseStyles } from "./index";
     },
   }));
   const {
-    root,
+    _root,
     // @ts-expect-error: 'otherProps' not exist
-    otherProp,
+    _otherProp,
   } = useStyles();
 }
 {
@@ -21,8 +22,8 @@ import { makeUseStyles } from "./index";
     },
   }));
   const {
-    root,
+    _root,
     // @ts-expect-error: 'otherProps' not exist
-    otherProp,
+    _otherProp,
   } = useStyles();
 }

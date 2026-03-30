@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
-import { useTheme } from "../useTheme";
+
 import { ThemeProvider } from "../context";
+import { useTheme } from "../useTheme";
 
 it("should throw an error when context value wasn't passed", () => {
   expect(() => {

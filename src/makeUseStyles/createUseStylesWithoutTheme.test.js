@@ -1,9 +1,10 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import { createUseStylesWithoutTheme } from "./createUseStylesWithoutTheme";
+import { act, renderHook } from "@testing-library/react-hooks";
 
+import { createEventEmitter } from "../createEventEmitter";
 import { addDependency } from "../dependencyRegistry";
 import { onUse } from "../dependencyUsage";
-import { createEventEmitter } from "../createEventEmitter";
+
+import { createUseStylesWithoutTheme } from "./createUseStylesWithoutTheme";
 
 const TEST_DEPENDENCY_KEY = `test_${Math.random()}`;
 

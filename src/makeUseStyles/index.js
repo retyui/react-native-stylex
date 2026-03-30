@@ -1,5 +1,5 @@
-import { createUseStylesWithoutTheme } from "./createUseStylesWithoutTheme";
 import { createUseStylesTheme } from "./createUseStylesTheme";
+import { createUseStylesWithoutTheme } from "./createUseStylesWithoutTheme";
 
 export function makeUseStyles(getStyles) {
   const hasThemeDependency = getStyles.length === 1;

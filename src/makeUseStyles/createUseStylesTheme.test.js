@@ -1,9 +1,11 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import { createUseStylesTheme } from "./createUseStylesTheme";
+import { act, renderHook } from "@testing-library/react-hooks";
+
 import { ThemeProvider } from "../context";
 import { createEventEmitter } from "../createEventEmitter";
 import { addDependency } from "../dependencyRegistry";
 import { onUse } from "../dependencyUsage";
+
+import { createUseStylesTheme } from "./createUseStylesTheme";
 
 it("should create styles using a theme", () => {
   const mockGetStyles = jest.fn(({ colors }) => ({
@@ -38,7 +40,7 @@ it("should create styles once", () => {
     {
       wrapper: ThemeProvider,
       initialProps: { value: theme },
-    }
+    },
   );
 
   expect(mockGetStyles).toHaveBeenCalledTimes(1);
