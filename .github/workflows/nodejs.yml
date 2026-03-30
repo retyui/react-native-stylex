@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-16]
+        os: [ubuntu-latest]
         node-version: [24.x]
     steps:
     - name: Checkout repository
