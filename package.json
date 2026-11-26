@@ -3,7 +3,10 @@
   "version": "5.0.0",
   "main": "index.js",
   "types": "index.d.ts",
-  "repository": "git@github.com:retyui/react-native-stylex.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retyui/react-native-stylex.git"
+  },
   "author": "David <4661784+retyui@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
@@ -15,7 +18,10 @@
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "test": "jest --coverage",
     "size": "yarn build && size-limit",
-    "ci": "yarn lint && yarn test && yarn size"
+    "ci": "yarn lint && yarn test && yarn size",
+    "changeset": "changeset",
+    "version-packages": "changeset version && yarn install --mode=update-lockfile",
+    "release": "yarn clean-publish && cd lib && npm publish --provenance --access public"
   },
   "peerDependencies": {
     "react": ">=19.0.0",
@@ -30,6 +36,8 @@
     }
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
     "@eslint/js": "^10.0.1",
     "@react-native/babel-preset": "^0.84.1",
     "@react-native/eslint-config": "^0.84.1",
