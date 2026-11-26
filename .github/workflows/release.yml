@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write # push the version PR branch and create the GitHub release
+  pull-requests: write # open the "chore: version packages" PR
+  id-token: write # npm Trusted Publishing + provenance
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - run: corepack enable
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          cache: 'yarn'
+          node-version: 24.x
+
+      - run: yarn install --immutable
+
+      # Opens/updates the "chore: version packages" PR while changesets are pending.
+      # Publishing is done by the steps below, because the package is published from `lib/`.
+      - name: Create version PR
+        id: changesets
+        uses: changesets/action@v2
+        with:
+          version-script: yarn version-packages
+          commit-message: 'chore: version packages'
+          pr-title: 'chore: version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if version is unpublished
+        id: check
+        if: steps.changesets.outputs.has-changesets == 'false'
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "react-native-stylex@$VERSION" version >/dev/null 2>&1; then
+            echo "react-native-stylex@$VERSION is already on npm, skipping publish"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to npm
+        if: steps.check.outputs.publish == 'true'
+        run: yarn release
+
+      - name: Create GitHub release
+        if: steps.check.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.check.outputs.version }}
+        run: |
+          PREV_TAG=$(gh release view --json tagName -q .tagName 2>/dev/null || git describe --tags --abbrev=0 2>/dev/null || true)
+
+          # Take the "## <version>" section of CHANGELOG.md, up to the next heading of level 1 or 2
+          awk -v v="## $VERSION" '
+            $0 == v { found = 1; next }
+            found && /^#{1,2} / { exit }
+            found { print }
+          ' CHANGELOG.md > notes.md
+
+          if [ -n "$PREV_TAG" ]; then
+            {
+              echo
+              echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/$PREV_TAG...$VERSION"
+              echo
+              echo "**npm diff**: https://npmfs.com/compare/react-native-stylex/$PREV_TAG/$VERSION/"
+            } >> notes.md
+          fi
+
+          gh release create "$VERSION" --target "$GITHUB_SHA" --title "$VERSION" --notes-file notes.md
